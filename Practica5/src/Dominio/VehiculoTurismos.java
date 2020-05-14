@@ -4,20 +4,42 @@ import java.util.ArrayList;
 
 public class VehiculoTurismos extends Vehiculo {
 	private int numpuertas;
+	private ExtrasVehiTurismos extras;
 
-	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio,
-			int numpuertas) {
+	
+	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio, int numpuertas,
+			ExtrasVehiTurismos extras) {
 		super(matricula, marca, modelo, color, precio);
 		this.numpuertas = numpuertas;
+		this.extras = extras;
 	}
+	
 
 	public int getNumpuertas() {
 		return numpuertas;
 	}
 
+
 	public void setNumpuertas(int numpuertas) {
 		this.numpuertas = numpuertas;
 	}
+
+
+	public ExtrasVehiTurismos getExtras() {
+		return extras;
+	}
+
+
+	public void setExtras(ExtrasVehiTurismos extras) {
+		this.extras = extras;
+	}
+
+
+	@Override
+	public String toString() {
+		return "VehiculoTurismos [numpuertas=" + numpuertas + ", extras=" + extras + "]";
+	}
+
 
 	@Override
 	public void insertar() throws ClassNotFoundException {
