@@ -6,7 +6,7 @@ public class Persona {
 	private String password;
 	private String nombre;
 	private int edad;
-	private int prueba;
+
 	private int prueba2;
 
 }
