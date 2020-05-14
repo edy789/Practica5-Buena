@@ -1,6 +1,8 @@
 package Dominio;
 
 public class Persona {
-	private String loging;
+	
+	private String loggin;
+	private int edad;
 
 }
