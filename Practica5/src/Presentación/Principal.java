@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Principal {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-
 		Scanner sc = new Scanner(System.in);
 		int opcion=0;
 		// Menú principal
