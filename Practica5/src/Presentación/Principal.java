@@ -16,15 +16,15 @@ public class Principal {
 		do {
 			try {
 				System.out.println("\nMenú");
-				System.out.println("1. Mostrar todos los vehículos");
-				System.out.println("2. Buscar un vehículo");
-				System.out.println("3. Insertar un vehículo");
-				System.out.println("4. Modificar un vehículo");
-				System.out.println("5. Eliminar un vehículo");
-				System.out.println("6. Eliminar todos los vehículos");
-				System.out.println("7. Mostrar todos los extras");
-				System.out.println("8. Buscar un extra");
-				System.out.println("9. Insertar un extra");
+				System.out.println("1.  Mostrar todos los vehículos");
+				System.out.println("2.  Buscar un vehículo");
+				System.out.println("3.  Insertar un vehículo");
+				System.out.println("4.  Modificar un vehículo");
+				System.out.println("5.  Eliminar un vehículo");
+				System.out.println("6.  Eliminar todos los vehículos");
+				System.out.println("7.  Mostrar todos los extras");
+				System.out.println("8.  Buscar un extra");
+				System.out.println("9.  Insertar un extra");
 				System.out.println("10. Modificar un extra");
 				System.out.println("11. Eliminar un extra");
 				System.out.println("12. Eliminar todos los extras");
