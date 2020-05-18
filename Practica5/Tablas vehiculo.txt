@@ -9,11 +9,11 @@ marca varchar(15) NOT NULL,
 modelo varchar(15) NOT NULL,
 color varchar(15) NOT NULL,
 capacidad varchar(15) NOT NULL,
-precio int NOT NULL
+precio double NOT NULL
 );
 
 CREATE TABLE Extra(
-idextra int PRIMARY KEY NOT NULL,
+identificador int PRIMARY KEY NOT NULL,
 descripcion varchar(50) NOT NULL
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE Turismos(
 matricula varchar(10) Primary key NOT NULL,
 marca varchar(15) NOT NULL,
 modelo varchar(15) NOT NULL,
-color varchar(15) NOT NULL,
+color varchar(50) NOT NULL,
 numpuertas int NOT NULL,
 precio int NOT NULL,
 extra int NOT NULL,

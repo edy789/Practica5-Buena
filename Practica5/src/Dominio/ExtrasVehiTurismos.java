@@ -1,7 +1,6 @@
 package Dominio;
 
 import java.util.ArrayList;
-
 import Persistencia.ExtrasVehiTurismosDao;
 
 public class ExtrasVehiTurismos {
@@ -47,7 +46,7 @@ public class ExtrasVehiTurismos {
 
 	}
 	public ExtrasVehiTurismos leerExtrasVehiTurismos(int identificador) throws ClassNotFoundException {
-		return extrasVehiTurismosDao.leer(id);
+		return extrasVehiTurismosDao.leer(identificador);
 
 	}
 
