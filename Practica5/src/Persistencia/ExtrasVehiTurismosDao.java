@@ -18,7 +18,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		Connection con=null;
 		
-		String sql="INSERT INTO Extra values ("+beca.getId()+", "+beca.getCuota()+",'"+beca.getDescripcion()+"')";
+		String sql="INSERT INTO Extra values ("+extrasVehiTurismos.getIdentificador()+", "+extrasVehiTurismos.getDescripcion()+"')";
 		
 		try {			
 			con=Conexion.conectar();
@@ -35,58 +35,58 @@ public class ExtrasVehiTurismosDao {
 	}
  
 	
-	public ArrayList<Beca> leerTodos() throws ClassNotFoundException {
+	public ArrayList<ExtrasVehiTurismos> leerTodos() throws ClassNotFoundException {
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
 		
 		String sql="SELECT * FROM Becas6 ORDER BY id";
 		
-		ArrayList<Beca> listaBeca= new ArrayList<Beca>();
+		ArrayList<ExtrasVehiTurismos> listaExtras= new ArrayList<ExtrasVehiTurismos>();
 		
 		try {			
 			co= Conexion.conectar();
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				listaBeca.add(new Beca(rs.getInt(1),rs.getDouble(2),rs.getString(3)));
+				listaExtras.add(new ExtrasVehiTurismos(rs.getInt(1),rs.getString(2)));
 			}
 			stm.close();
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BecaDaoImple, método obtener");
+			System.out.println("Error: Clase BecaDaoImple, método leerTodos");
 			e.printStackTrace();
 		}
 		
-		return listaBeca;
+		return listaExtras;
 	}
  
 
 	
-	public Beca leer(int id) throws ClassNotFoundException {
+	public ExtrasVehiTurismos leer(int identificador) throws ClassNotFoundException {
 		Connection co =null;
 		Statement stm= null;
 		ResultSet rs=null;
-		Beca leerBeca = null;
-		String sql="SELECT * FROM Becas6 WHERE id="+id+"";
+		ExtrasVehiTurismos leerExtrasVehiTurismos = null;
+		String sql="SELECT * FROM Extra WHERE identificador="+identificador+"";
 		try {
 			co= Conexion.conectar();
 			stm=co.createStatement();
 			rs=stm.executeQuery(sql);
 			while (rs.next()) {
-				leerBeca = new Beca(rs.getInt(1),rs.getDouble(2),rs.getString(3));
+				leerExtrasVehiTurismos = new ExtrasVehiTurismos(rs.getInt(1),rs.getString(2));
 			}
 			stm.close();
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error:  método eliminar");
+			System.out.println("Error:  método leer");
 			e.printStackTrace();
 		}		
-		return leerBeca;
+		return leerExtrasVehiTurismos;
 	}
-	public boolean actualizar(Beca beca, int id) throws ClassNotFoundException {
+	public boolean actualizar(ExtrasVehiTurismos extrasVehiTurismos, int identificador) throws ClassNotFoundException {
 		Connection connect= null;
 		Statement stm= null;
 		
