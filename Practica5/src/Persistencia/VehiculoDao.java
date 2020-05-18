@@ -14,4 +14,9 @@ abstract public class VehiculoDao {
 		abstract public boolean actualizar(Vehiculo vehiculo, String matricula) throws ClassNotFoundException;
 		abstract public boolean eliminar(Vehiculo vehiculo) throws ClassNotFoundException ;
 		abstract public boolean eliminarTodo() throws ClassNotFoundException;
+		
+		
+		
 }
+
+
