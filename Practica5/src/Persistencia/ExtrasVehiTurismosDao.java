@@ -86,13 +86,15 @@ public class ExtrasVehiTurismosDao {
 		}		
 		return leerExtrasVehiTurismos;
 	}
+	
+	
 	public boolean actualizar(ExtrasVehiTurismos extrasVehiTurismos, int identificador) throws ClassNotFoundException {
 		Connection connect= null;
 		Statement stm= null;
 		
 		boolean actualizar=false;
 		
-		String sql="UPDATE Becas6 SET id="+beca.getId()+", cuota="+beca.getCuota()+", descripcion='"+beca.getDescripcion()+"' WHERE id="+id+"";
+		String sql="UPDATE Extra SET identificador="+extrasVehiTurismos.getIdentificador()+", descripcion="+extrasVehiTurismos.getDescripcion()+"' WHERE identificador="+identificador+"";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
@@ -102,18 +104,19 @@ public class ExtrasVehiTurismosDao {
 			System.out.println("Error: método actualizar");
 			e.printStackTrace();
 		}
-		
 			
 		return actualizar;
 	}
  
 	
-	public boolean eliminar(Beca beca) throws ClassNotFoundException {
+	public boolean eliminar(ExtrasVehiTurismos extrasVehiTurismos) throws ClassNotFoundException {
 		Connection connect= null;
 		Statement stm= null;
 		boolean actualizar=false;
 		boolean eliminar=false;
-		String sql="UPDATE Alumnos6 SET beca=1 WHERE beca="+beca.getId()+"";
+		String sql="UPDATE Extra SET beca=1 WHERE beca="+beca.getId()+"";
+		String sql="DELETE FROM Extra WHERE identificador='"+profesor.getDNI()+"'";
+		
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
@@ -144,7 +147,7 @@ public class ExtrasVehiTurismosDao {
 		
 		boolean eliminar=false;
 		boolean actualizar=false;
-		String sql="UPDATE Alumnos6 SET beca=1";
+		String sql="UPDATE Extra SET beca=1";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
