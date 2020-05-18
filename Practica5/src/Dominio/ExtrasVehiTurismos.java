@@ -43,16 +43,14 @@ public class ExtrasVehiTurismos {
 
 	public ArrayList<ExtrasVehiTurismos> leerTodos() throws ClassNotFoundException {
 		return extrasVehiTurismosDao.leerTodos();
-
 	}
+	
 	public ExtrasVehiTurismos leerExtrasVehiTurismos(int identificador) throws ClassNotFoundException {
 		return extrasVehiTurismosDao.leer(identificador);
-
 	}
 
 	public void actualizar(int identificador) throws ClassNotFoundException {
 		extrasVehiTurismosDao.actualizar(this, identificador);
-
 	}
 
 	public void eliminar() throws ClassNotFoundException {

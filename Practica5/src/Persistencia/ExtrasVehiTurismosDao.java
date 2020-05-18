@@ -114,8 +114,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		boolean actualizar=false;
 		boolean eliminar=false;
-		String sql="UPDATE Extra SET beca=1 WHERE beca="+beca.getId()+"";
-		String sql="DELETE FROM Extra WHERE identificador='"+profesor.getDNI()+"'";
+		String sql="DELETE FROM Extra WHERE identificador='"+extrasVehiTurismos.getIdentificador()+"'";
 		
 		try {
 			connect=Conexion.conectar();
@@ -125,10 +124,10 @@ public class ExtrasVehiTurismosDao {
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: método actualizar");
+			System.out.println("Error: método eliminar");
 			e.printStackTrace();
 		}	
-		sql="DELETE FROM Becas6 WHERE id="+beca.getId()+"";
+		sql="DELETE FROM Extra WHERE identificador="+extrasVehiTurismos.getIdentificador()+"";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
@@ -146,33 +145,20 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		
 		boolean eliminar=false;
-		boolean actualizar=false;
-		String sql="UPDATE Extra SET beca=1";
+		String sql="DELETE FROM Extra";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
 			stm.execute(sql);
-			actualizar=true;
 			stm.close();
 			connect.close();
 		} catch (SQLException e) {
-			System.out.println("Error: método actualizar");
+			System.out.println("Error: método eliminarTodo");
 			e.printStackTrace();
 		}	
-		sql="DELETE FROM Becas6 WHERE id<>1";
-		try {
-			connect=Conexion.conectar();
-			stm=connect.createStatement();
-			stm.execute(sql);
-			eliminar=true;
-		} catch (SQLException e) {
-			System.out.println("Error:  método eliminar");
-			e.printStackTrace();
-		}		
 		return eliminar;		
-	}
 
-}
+	}
 
 	
 }
