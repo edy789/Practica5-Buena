@@ -1,3 +1,8 @@
+DROP TABLE Extra;
+DROP TABLE Turismos;
+DROP TABLE Camiones;
+DROP TABLE Usuarios;
+
 CREATE TABLE Camiones(
 matricula varchar(10) Primary key NOT NULL,
 marca varchar(15) NOT NULL,
@@ -24,8 +29,8 @@ FOREIGN KEY(extra) REFERENCES Extra
 );
 
 CREATE TABLE Usuarios(
-Usuario varchar(15) Primary key NOT NULL,
-Contraseña varchar(15) NOT NULL
+loggin varchar(50) Primary key NOT NULL,
+password varchar(50) NOT NULL
 );
 
 INSERT INTO Camiones VALUES ('9517FJQ', 'Ford', 'Transit', 'rojo pasion', '200kg', 20.000); 
@@ -39,8 +44,3 @@ INSERT INTO Turismos VALUES ('7354BNP', 'BMW', 'M2', 'rojiblanco', 3, 80.000, 2)
 
 INSERT INTO Usuarios VALUES ('Pedro', 'Pedrito'); 
 INSERT INTO Usuarios VALUES ('Mario', 'MarioMa');
-
-DROP TABLE Turismos;
-DROP TABLE Camiones;
-DROP TABLE Extra;
-DROP TABLE Usuarios;
