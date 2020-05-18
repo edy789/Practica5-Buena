@@ -1,13 +1,21 @@
 package Dominio;
 
+import java.util.ArrayList;
+
+import Persistencia.ExtrasVehiTurismosDao;
+
 public class ExtrasVehiTurismos {
 	private int identificador;
 	private String descripcion;
+	private ExtrasVehiTurismosDao extrasVehiTurismosDao;
 
-	
 	public ExtrasVehiTurismos(int identificador, String descripcion) {
 		this.identificador = identificador;
 		this.descripcion = descripcion;
+		extrasVehiTurismosDao= new ExtrasVehiTurismosDao();
+	}
+	public ExtrasVehiTurismos() {
+		extrasVehiTurismosDao= new ExtrasVehiTurismosDao();
 	}
 
 	public int getIdentificador() {
@@ -30,6 +38,32 @@ public class ExtrasVehiTurismos {
 		return "ExtrasVehiTurismos [identificador=" + identificador + ", descripcion=" + descripcion + "]";
 	}
 	
-	
-	
+	public void insertar() throws ClassNotFoundException {
+		extrasVehiTurismosDao.insertar(this);
+	}
+
+	public ArrayList<ExtrasVehiTurismos> leerTodos() throws ClassNotFoundException {
+		return extrasVehiTurismosDao.leerTodos();
+
+	}
+	public ExtrasVehiTurismos leerExtrasVehiTurismos(int identificador) throws ClassNotFoundException {
+		return extrasVehiTurismosDao.leer(id);
+
+	}
+
+	public void actualizar(int identificador) throws ClassNotFoundException {
+		extrasVehiTurismosDao.actualizar(this, identificador);
+
+	}
+
+	public void eliminar() throws ClassNotFoundException {
+		extrasVehiTurismosDao.eliminar(this);
+	}
+
+	public void eliminarTodo() throws ClassNotFoundException {
+		extrasVehiTurismosDao.eliminarTodo();
+
+	}
+
+		
 }
