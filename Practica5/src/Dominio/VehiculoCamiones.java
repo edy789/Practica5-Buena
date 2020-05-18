@@ -10,6 +10,9 @@ public class VehiculoCamiones extends Vehiculo{
 		super(matricula, marca, modelo, color, precio);
 		this.capacarga = capacarga;
 	}
+	public VehiculoCamiones() {
+		
+	}
 
 	public double getCapacarga() {
 		return capacarga;

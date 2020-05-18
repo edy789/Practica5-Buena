@@ -3,10 +3,8 @@ package Dominio;
 public class Empleado {
 	private String loggin;
 	private String password;
-
 	
 	public Empleado(String loggin, String password) {
-		super();
 		this.loggin = loggin;
 		this.password = password;
 	}

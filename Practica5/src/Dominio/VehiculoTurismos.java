@@ -14,32 +14,30 @@ public class VehiculoTurismos extends Vehiculo {
 		this.extras = extras;
 	}
 	
+	public VehiculoTurismos() {
+		
+	}
 
 	public int getNumpuertas() {
 		return numpuertas;
 	}
 
-
 	public void setNumpuertas(int numpuertas) {
 		this.numpuertas = numpuertas;
 	}
-
 
 	public ExtrasVehiTurismos getExtras() {
 		return extras;
 	}
 
-
 	public void setExtras(ExtrasVehiTurismos extras) {
 		this.extras = extras;
 	}
-
 
 	@Override
 	public String toString() {
 		return "VehiculoTurismos [numpuertas=" + numpuertas + ", extras=" + extras + "]";
 	}
-
 
 	@Override
 	public void insertar() throws ClassNotFoundException {

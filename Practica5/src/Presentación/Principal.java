@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Dominio.Vehiculo;
+import Dominio.VehiculoCamiones;
+
 public class Principal {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -304,8 +307,8 @@ public class Principal {
 	}
 
 	public static void mostrarTodos() throws ClassNotFoundException {
-		Persona buscarPersona = new Persona();
-		ArrayList<Persona> personas = buscarPersona.leerTodos();
+		VehiculoCamiones buscarVehiculoCam = new VehiculoCamiones();
+		ArrayList<VehiculoCamiones> listVehiculo = buscarVehiculoCam.leerTodos();
 		for (int i = 0; i < personas.size(); i++) {
 			System.out.println(personas.get(i).toString());
 		}
