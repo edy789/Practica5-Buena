@@ -89,6 +89,8 @@ public class Principal {
 	private static void mostrarVehiculos() {
 		// TODO Auto-generated method stub
 		
+		
+		
 	}
 
 	private static void buscarVehiculo() {
