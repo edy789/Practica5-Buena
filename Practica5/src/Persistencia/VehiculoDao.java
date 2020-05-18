@@ -1,7 +1,6 @@
 package Persistencia;
 
 import java.util.ArrayList;
-
 import Dominio.Vehiculo;
 
 abstract public class VehiculoDao {
