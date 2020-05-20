@@ -2,6 +2,7 @@ package Dominio;
 
 import java.util.ArrayList;
 import Persistencia.ExtrasVehiTurismosDao;
+import Persistencia.VehiculoCamionesDao;
 import Persistencia.VehiculoTurismoDao;
 
 public class VehiculoTurismos extends Vehiculo {
@@ -13,6 +14,7 @@ public class VehiculoTurismos extends Vehiculo {
 		super(matricula, marca, modelo, color, precio);
 		this.numpuertas = numpuertas;
 		this.extras = extras;
+		vehiculoTurismoDao = new VehiculoTurismoDao();
 	}
 	
 	public VehiculoTurismos() {
@@ -51,7 +53,7 @@ public class VehiculoTurismos extends Vehiculo {
 	}
 
 	@Override
-	public Vehiculo leerPersona(String matricula) throws ClassNotFoundException {
+	public Vehiculo leerVehiculo(String matricula) throws ClassNotFoundException {
 		return VehiculoTurismosDao.leer(matricula);
 	}
 
@@ -69,6 +71,8 @@ public class VehiculoTurismos extends Vehiculo {
 	public void eliminarTodo() throws ClassNotFoundException {
 		VehiculoTurismosDao.eliminarTodo();
 	}
+
+	
 	
 	
 	

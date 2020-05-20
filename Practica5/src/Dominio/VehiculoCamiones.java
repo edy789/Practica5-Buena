@@ -27,7 +27,6 @@ public class VehiculoCamiones extends Vehiculo{
 		this.capacarga = capacarga;
 	}
 
-	
 	public boolean insertar() throws ClassNotFoundException { 
 		return cDAO.insertar(this);
 	}
@@ -44,17 +43,17 @@ public class VehiculoCamiones extends Vehiculo{
 
 	@Override
 	public void actualizar(String matricula) throws ClassNotFoundException {
-		// TODO Auto-generated method stub	
+		cDAO.leer(matricula); 
 	}
 
 	@Override
 	public void eliminar() throws ClassNotFoundException {
-		// TODO Auto-generated method stub	
+		cDAO.eliminar(this);
 	}
 
 	@Override
 	public void eliminarTodo() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
+		cDAO.eliminarTodo();
 
 }
 		

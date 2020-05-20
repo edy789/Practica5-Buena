@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Dominio.Alumno;
 import Dominio.Empleado;
+import Dominio.Persona;
+import Dominio.Profesor;
 import Dominio.Vehiculo;
 import Dominio.VehiculoCamiones;
 
@@ -23,10 +26,13 @@ public class Principal {
 		
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
 		
+		buscarPersona();
+		
 		System.out.println("Inserte su loggin");
 		usu = sc.next();
 		System.out.println("Inserte su contraseña");
 		clave = sc.next();
+		
 		
 		
 		
@@ -162,6 +168,26 @@ public class Principal {
 	private static void eliminarTodosLosExtras() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static void buscarPersona() throws ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Indica el Loggin");
+		String DNI = sc.next();
+		System.out.println("Indica el Loggin");
+		String DNI = sc.next();
+		Persona leerAlumno = new Alumno();
+		leerAlumno = leerAlumno.leerPersona(DNI);
+		Persona leerProfesor = new Profesor();
+		leerProfesor = leerProfesor.leerPersona(DNI);
+		if (leerAlumno != null) {
+			System.out.println(leerAlumno.toString());
+		} else if (leerProfesor != null) {
+			System.out.println(leerProfesor.toString());
+		} else {
+			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+		}
+
 	}
 	
 
