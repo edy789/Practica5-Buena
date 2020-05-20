@@ -1,13 +1,15 @@
 package Dominio;
 
 import java.util.ArrayList;
+import Persistencia.ExtrasVehiTurismosDao;
+import Persistencia.VehiculoCamionesDao;
 
 import Persistencia.VehiculoCamionesDao;
 
 public class VehiculoCamiones extends Vehiculo{
 	private double capacarga;
 	private VehiculoCamionesDao cDAO;
-	
+	private VehiculoCamionesDao vehiculoCamionesDao;
 
 	public VehiculoCamiones(String matricula, String marca, String modelo, String color, double precio,
 			double capacarga) {
@@ -28,6 +30,7 @@ public class VehiculoCamiones extends Vehiculo{
 	}
 	
 	@Override
+
 	public boolean insertar() throws ClassNotFoundException { 
 		return cDAO.insertar(this);
 	}
@@ -44,14 +47,12 @@ public class VehiculoCamiones extends Vehiculo{
 
 	@Override
 	public void actualizar(String matricula) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void eliminar() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
