@@ -3,11 +3,11 @@ package Dominio;
 import java.util.ArrayList;
 
 public abstract class Vehiculo {
-	private String matricula;
-	private String marca;
-	private String modelo;
+	private static String matricula;
+	private static String marca;
+	private static String modelo;
 	private String color;
-	private double precio;
+	private static double precio;
 	
 	public Vehiculo(String matricula, String marca, String modelo, String color, double precio) {
 		this.matricula = matricula;
@@ -19,7 +19,7 @@ public abstract class Vehiculo {
 	public Vehiculo() {
 	}
 
-	public String getMatricula() {
+	public static String getMatricula() {
 		return matricula;
 	}
 
@@ -27,7 +27,7 @@ public abstract class Vehiculo {
 		this.matricula = matricula;
 	}
 
-	public String getMarca() {
+	public static String getMarca() {
 		return marca;
 	}
 
@@ -35,7 +35,7 @@ public abstract class Vehiculo {
 		this.marca = marca;
 	}
 
-	public String getModelo() {
+	public static String getModelo() {
 		return modelo;
 	}
 
@@ -51,7 +51,7 @@ public abstract class Vehiculo {
 		this.color = color;
 	}
 
-	public double getPrecio() {
+	public static double getPrecio() {
 		return precio;
 	}
 
