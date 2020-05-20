@@ -1,7 +1,6 @@
 package Dominio;
 
 import java.util.ArrayList;
-import Persistencia.ExtrasVehiTurismosDao;
 import Persistencia.VehiculoCamionesDao;
 
 import Persistencia.VehiculoCamionesDao;
@@ -28,9 +27,8 @@ public class VehiculoCamiones extends Vehiculo{
 	public void setCapacarga(double capacarga) {
 		this.capacarga = capacarga;
 	}
-	
-	@Override
 
+	@Override
 	public boolean insertar() throws ClassNotFoundException { 
 		return cDAO.insertar(this);
 	}
@@ -58,8 +56,8 @@ public class VehiculoCamiones extends Vehiculo{
 	@Override
 	public void eliminarTodo() throws ClassNotFoundException {
 		// TODO Auto-generated method stub
-		
-	}
 
+}
+		
 	
 }

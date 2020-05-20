@@ -11,7 +11,6 @@ public class VehiculoTurismos extends Vehiculo {
 
 	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio, int numpuertas,
 			ExtrasVehiTurismos extras) {
-
 		super(matricula, marca, modelo, color, precio);
 		this.numpuertas = numpuertas;
 		this.extras = extras;
@@ -45,37 +44,31 @@ public class VehiculoTurismos extends Vehiculo {
 	@Override
 	public void insertar() throws ClassNotFoundException {
 		VehiculoTurismosDao.insertar(this);
-		
 	}
 
 	@Override
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return VehiculoTurismosDao.leerTodos();
 	}
 
 	@Override
 	public Vehiculo leerPersona(String matricula) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return VehiculoTurismosDao.leer(matricula);
 	}
 
 	@Override
 	public void actualizar(String matricula) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+		VehiculoTurismosDao.actualizar(this, matricula);
 	}
 
 	@Override
 	public void eliminar() throws ClassNotFoundException {
-		VehiculoTurismosDao.eliminarTodo();
-		
+		VehiculoTurismosDao.eliminar(this);	
 	}
 
 	@Override
 	public void eliminarTodo() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+		VehiculoTurismosDao.eliminarTodo();
 	}
 	
 	
