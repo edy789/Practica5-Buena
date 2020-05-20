@@ -169,7 +169,6 @@ public class VehiculoCamionesDao extends VehiculoDao{
 				connect=Conexion.conectar();
 				stm=connect.createStatement();
 				stm.execute(sql);
-				stm.execute(sql2);
 				eliminar=true;
 			} catch (SQLException e) {
 				System.out.println("Error:  método eliminar");
