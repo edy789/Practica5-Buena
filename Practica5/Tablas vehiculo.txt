@@ -23,7 +23,7 @@ marca varchar(15) NOT NULL,
 modelo varchar(15) NOT NULL,
 color varchar(50) NOT NULL,
 numpuertas int NOT NULL,
-precio int NOT NULL,
+precio double NOT NULL,
 extra int NOT NULL,
 FOREIGN KEY(extra) REFERENCES Extra
 );
