@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Dominio.ExtrasVehiTurismos;
+import Dominio.VehiculoCamiones;
 
 
 public class ExtrasVehiTurismosDao {
@@ -18,8 +19,8 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		Connection con=null;
 		
-		String sql="INSERT INTO Extra values ("+extrasVehiTurismos.getIdentificador()+", "+extrasVehiTurismos.getDescripcion()+"')";
-		
+		String sql="INSERT INTO Camines values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"',"+VehiculoCamiones.getColor() +")";
+		String sql2="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"',"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+")";
 		try {			
 			con=Conexion.conectar();
 			stm= con.createStatement();
