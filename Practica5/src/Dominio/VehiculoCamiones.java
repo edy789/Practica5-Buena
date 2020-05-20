@@ -1,4 +1,4 @@
-package Dominio;
+ package Dominio;
 
 import java.util.ArrayList;
 import Persistencia.VehiculoCamionesDao;

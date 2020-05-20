@@ -175,13 +175,34 @@ public class VehiculoTurismoDao extends VehiculoDao{
 		return actualizar;
 	}
 
-	}
+	
 
 	@Override
 	public boolean eliminar(Vehiculo vehiculo) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return false;
+		Connection connect= null;
+		Statement stm= null;
+		
+		boolean eliminar=false;
+		
+		String sql= "DELETE FROM Extra where identificador='"+ ExtrasVehiTurismos.getIdentificador()+"";
+		String sql2="DELETE FROM turismos WHERE matricula='"+VehiculoTurismos.getMatricula()+"'";
+		
+		try {
+			connect=Conexion.conectar();
+			stm=connect.createStatement();
+			stm.execute(sql);
+			
+			eliminar=true;
+		} catch (SQLException e) {
+			System.out.println("Error:  método eliminar");
+			e.printStackTrace();
+		}				
+			
+		return eliminar;
 	}
+
+
+	
 
 	@Override
 	public boolean eliminarTodo() throws ClassNotFoundException {

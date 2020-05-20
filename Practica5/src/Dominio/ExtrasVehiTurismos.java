@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import Persistencia.ExtrasVehiTurismosDao;
 
 public class ExtrasVehiTurismos {
-	private int identificador;
+	private static int identificador;
 	private String descripcion;
 	private ExtrasVehiTurismosDao extrasVehiTurismosDao;
 
@@ -17,7 +17,7 @@ public class ExtrasVehiTurismos {
 		extrasVehiTurismosDao= new ExtrasVehiTurismosDao();
 	}
 
-	public int getIdentificador() {
+	public static int getIdentificador() {
 		return identificador;
 	}
 
