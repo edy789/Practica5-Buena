@@ -28,9 +28,6 @@ public class Principal {
 		System.out.println("Inserte su contraseña");
 		clave = sc.next();
 		
-		if (condition) {
-			
-		}
 		
 		
 		// Menú principal
