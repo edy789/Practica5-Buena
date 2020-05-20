@@ -21,14 +21,12 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			Statement stm= null;
 			Connection con=null;
 			
-			String sql="INSERT INTO Camines values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"',"+VehiculoCamiones.getColor() +")";
-			String sql2="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"',"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+")";
+			String sql="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"','"+VehiculoCamiones.getColor()+"','"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+"' +");
 
 			try {			
 				con=Conexion.conectar();
 				stm= con.createStatement();
 				stm.execute(sql);
-				stm.execute(sql2);
 				registrar=true;
 				stm.close();
 				con.close();
@@ -124,13 +122,11 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			
 			boolean actualizar=false;
 			if(VehiculoCamiones.getMatricula().equals(Matricula)) {			
-			String sql="UPDATE Camiones SET matricula='"+VehiculoCamiones.getMatricula()+"', marca='"+VehiculoCamiones.getMarca()+"', modelo='"+VehiculoCamiones.getModelo()+"', color='"+VehiculoCamiones.getColor()+"' , precio="+VehiculoCamiones.getPrecio()+" WHERE Matricula='"+VehiculoCamiones.getMatricula()+"'";
-			String sql2="UPDATE Camiones SET matricula='"+VehiculoCamiones.getMatricula()+"', capacidad="+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+" WHERE Matricula='"+VehiculoCamiones.getMatricula()+"'";
+			String sql="UPDATE Camiones SET matricula='"+VehiculoCamiones.getMatricula()+"', marca='"+VehiculoCamiones.getMarca()+"', modelo='"+VehiculoCamiones.getModelo()+"', color='"+VehiculoCamiones.getColor()+"' , precio="+VehiculoCamiones.getPrecio()+"', capacidad="+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+" WHERE Matricula='"+VehiculoCamiones.getMatricula()+"'";
 			try {
 				connect=Conexion.conectar();
 				stm=connect.createStatement();
 				stm.execute(sql);
-				stm.execute(sql2);
 				actualizar=true;
 				stm.close();
 				connect.close();
@@ -139,17 +135,13 @@ public class VehiculoCamionesDao extends VehiculoDao{
 				e.printStackTrace();
 			}		
 			}else {
-			String sql="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"', '"+VehiculoCamiones.getModelo()+"', '"+VehiculoCamiones.getColor()+"', "+VehiculoCamiones.getPrecio()+")";
-			String sql2="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"',"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+")";
+			String sql="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"', '"+VehiculoCamiones.getModelo()+"', '"+VehiculoCamiones.getColor()+"', "+VehiculoCamiones.getPrecio()+"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+"+")";
 			String sql3="DELETE FROM Camiones WHERE matricula='"+Matricula+"'";
-			String sql4="DELETE FROM Camiones WHERE matricula='"+Matricula+"'";
 			try {
 				connect=Conexion.conectar();
 				stm=connect.createStatement();
 				stm.execute(sql);
-				stm.execute(sql2);
 				stm.execute(sql3);
-				stm.execute(sql4);
 
 				actualizar=true;
 				stm.close();
@@ -172,13 +164,11 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			boolean eliminar=false;
 			
 			String sql="DELETE FROM Camiones WHERE atricula='"+VehiculoCamiones.getMatricula()+"'";
-			String sql2="DELETE FROM Camiones WHERE matricula='"+VehiculoCamiones.getMatricula()+"'";
 
 			try {
 				connect=Conexion.conectar();
 				stm=connect.createStatement();
 				stm.execute(sql);
-				stm.execute(sql2);
 				eliminar=true;
 			} catch (SQLException e) {
 				System.out.println("Error:  método eliminar");

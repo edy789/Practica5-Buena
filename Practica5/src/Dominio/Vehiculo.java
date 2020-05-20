@@ -64,9 +64,9 @@ public abstract class Vehiculo {
 				+ ", precio=" + precio + "]";
 	}
 	
-	abstract public void insertar() throws ClassNotFoundException ;
+	abstract public boolean insertar() throws ClassNotFoundException ;
 	abstract public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException ;
-	abstract public Vehiculo leerPersona(String matricula) throws ClassNotFoundException;
+	abstract public Vehiculo leerVehiculo(String matricula) throws ClassNotFoundException;
 	abstract public void actualizar(String matricula) throws ClassNotFoundException ;
 	abstract public void eliminar() throws ClassNotFoundException;
 	abstract public void eliminarTodo() throws ClassNotFoundException;
