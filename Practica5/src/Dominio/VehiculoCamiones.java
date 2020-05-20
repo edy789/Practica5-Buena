@@ -2,16 +2,21 @@ package Dominio;
 
 import java.util.ArrayList;
 
+import Persistencia.VehiculoCamionesDao;
+
 public class VehiculoCamiones extends Vehiculo{
 	private double capacarga;
+	private VehiculoCamionesDao cDAO;
+	
 
 	public VehiculoCamiones(String matricula, String marca, String modelo, String color, double precio,
 			double capacarga) {
 		super(matricula, marca, modelo, color, precio);
+		cDAO = new VehiculoCamionesDao();
 		this.capacarga = capacarga;
 	}
 	public VehiculoCamiones() {
-		
+		cDAO = new VehiculoCamionesDao();
 	}
 
 	public double getCapacarga() {
@@ -21,23 +26,20 @@ public class VehiculoCamiones extends Vehiculo{
 	public void setCapacarga(double capacarga) {
 		this.capacarga = capacarga;
 	}
-
+	
 	@Override
-	public void insertar() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		
+	public boolean insertar() throws ClassNotFoundException { 
+		return cDAO.insertar(this);
 	}
 
 	@Override
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return cDAO.leerTodos();
 	}
 
 	@Override
-	public Vehiculo leerPersona(String matricula) throws ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public Vehiculo leerVehiculo(String matricula) throws ClassNotFoundException {
+		return cDAO.leer(matricula); 
 	}
 
 	@Override
