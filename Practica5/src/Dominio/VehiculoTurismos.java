@@ -8,17 +8,17 @@ import Persistencia.VehiculoTurismoDao;
 public class VehiculoTurismos extends Vehiculo {
 	private int numpuertas;
 	private ExtrasVehiTurismos extras;
-	private VehiculoTurismoDao vehiculoTurismoDao;
+	private VehiculoTurismoDao VehiculoTurismosDao;
 
 	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio, int numpuertas, ExtrasVehiTurismos extras) {
 		super(matricula, marca, modelo, color, precio);
 		this.numpuertas = numpuertas;
 		this.extras = extras;
-		vehiculoTurismoDao = new VehiculoTurismoDao();
+		VehiculoTurismosDao = new VehiculoTurismoDao();
 	}
 	
 	public VehiculoTurismos() {
-		
+		VehiculoTurismosDao = new VehiculoTurismoDao();
 	}
 
 	public int getNumpuertas() {
@@ -43,8 +43,8 @@ public class VehiculoTurismos extends Vehiculo {
 	}
 
 	@Override
-	public void insertar() throws ClassNotFoundException {
-		VehiculoTurismosDao.insertar(this);
+	public boolean insertar() throws ClassNotFoundException {
+		return VehiculoTurismosDao.insertar(this);
 	}
 
 	@Override
