@@ -1,5 +1,7 @@
 package Dominio;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Persistencia.EmpleadoDao;
@@ -62,5 +64,8 @@ public class Empleado {
 		empleadoDao.eliminarTodo();
 
 	}
+	public ArrayList<Empleado>leerEmpleados()throws FileNotFoundException;		//lectura de los metodos de los cuales heredaran los empleados
+	public void escribirEmpleados(ArrayList<Empleado>empleados)throws IOException;
+
 	
 }

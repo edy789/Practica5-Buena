@@ -9,8 +9,7 @@ public class VehiculoTurismos extends Vehiculo {
 	private ExtrasVehiTurismos extras;
 	private VehiculoTurismoDao vehiculoTurismoDao;
 
-	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio, int numpuertas,
-			ExtrasVehiTurismos extras) {
+	public VehiculoTurismos(String matricula, String marca, String modelo, String color, double precio, int numpuertas, ExtrasVehiTurismos extras) {
 		super(matricula, marca, modelo, color, precio);
 		this.numpuertas = numpuertas;
 		this.extras = extras;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Dominio.Empleado;
 import Dominio.Vehiculo;
 import Dominio.VehiculoCamiones;
 
@@ -13,7 +14,25 @@ public class Principal {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
+		Empleado emp = null;
 		int opcion=0;
+		
+		// Cargar los datos
+		String usu="";
+		String clave="";
+		
+		System.out.println("Bienvenido a su administrador de vehiculos\n");
+		
+		System.out.println("Inserte su loggin");
+		usu = sc.next();
+		System.out.println("Inserte su contraseña");
+		clave = sc.next();
+		
+		if (condition) {
+			
+		}
+		
+		
 		// Menú principal
 		do {
 			try {
@@ -76,14 +95,14 @@ public class Principal {
 					System.out.println("Hasta pronto");
 					break;
 				default:
-					System.out.println("Introduce un número de 1 a 14");
+					System.out.println("Introduce un número de 1 a 13");
 				}
 
 			} catch (InputMismatchException e) {
 				System.err.println("Introduce un número");
 				sc.nextLine();
 			}
-		} while (opcion!=14);
+		} while (opcion!=13);
 	}
 
 	private static void mostrarVehiculos() {
@@ -148,7 +167,6 @@ public class Principal {
 		
 	}
 	
-	//C3
 
 	}
 

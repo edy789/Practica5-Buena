@@ -26,7 +26,6 @@ public class VehiculoCamiones extends Vehiculo{
 	@Override
 	public void insertar() throws ClassNotFoundException {
 		vehiculoCamionesDao.insertar(this);
-		
 	}
 	@Override
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
