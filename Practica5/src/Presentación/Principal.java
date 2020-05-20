@@ -28,10 +28,7 @@ public class Principal {
 		
 		buscarPersona();
 		
-		System.out.println("Inserte su loggin");
-		usu = sc.next();
-		System.out.println("Inserte su contraseña");
-		clave = sc.next();
+		
 		
 		
 		
@@ -173,13 +170,12 @@ public class Principal {
 	public static void buscarPersona() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica el Loggin");
-		String DNI = sc.next();
-		System.out.println("Indica el Loggin");
-		String DNI = sc.next();
-		Persona leerAlumno = new Alumno();
+		String loggin = sc.next();
+		System.out.println("Indica su contraseña");
+		String clave = sc.next();
+		Empleado leerEmpleado = new Empleado();
 		leerAlumno = leerAlumno.leerPersona(DNI);
-		Persona leerProfesor = new Profesor();
-		leerProfesor = leerProfesor.leerPersona(DNI);
+		
 		if (leerAlumno != null) {
 			System.out.println(leerAlumno.toString());
 		} else if (leerProfesor != null) {
@@ -189,7 +185,6 @@ public class Principal {
 		}
 
 	}
-	
 
 	}
 
