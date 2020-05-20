@@ -27,7 +27,6 @@ public class VehiculoCamiones extends Vehiculo{
 		this.capacarga = capacarga;
 	}
 
-	
 	public boolean insertar() throws ClassNotFoundException { 
 		return cDAO.insertar(this);
 	}

@@ -53,7 +53,7 @@ public class VehiculoTurismos extends Vehiculo {
 	}
 
 	@Override
-	public Vehiculo leerPersona(String matricula) throws ClassNotFoundException {
+	public Vehiculo leerVehiculo(String matricula) throws ClassNotFoundException {
 		return VehiculoTurismosDao.leer(matricula);
 	}
 
@@ -71,6 +71,8 @@ public class VehiculoTurismos extends Vehiculo {
 	public void eliminarTodo() throws ClassNotFoundException {
 		VehiculoTurismosDao.eliminarTodo();
 	}
+
+	
 	
 	
 	

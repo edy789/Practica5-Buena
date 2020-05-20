@@ -21,8 +21,9 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			Statement stm= null;
 			Connection con=null;
 			
-			String sql="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"','"+VehiculoCamiones.getColor()+"','"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+"' +");
-
+			String sql="INSERT INTO Camines values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"',"+VehiculoCamiones.getColor() +")";
+			String sql2="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"',"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+")";
+			
 			try {			
 				con=Conexion.conectar();
 				stm= con.createStatement();
