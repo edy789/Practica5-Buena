@@ -46,7 +46,7 @@ public class Empleado {
 		return empleadoDao.leerTodos();
 
 	}
-	public Empleado leerPersona(String loggin) throws ClassNotFoundException {
+	public Empleado leerEmpleado(String loggin) throws ClassNotFoundException {
 		return empleadoDao.leer(loggin);
 
 	}

@@ -172,9 +172,14 @@ public class Principal {
 		System.out.println("Indica el Loggin");
 		String loggin = sc.next();
 		System.out.println("Indica su contraseña");
-		String clave = sc.next();
-		Empleado leerEmpleado = new Empleado();
+		String password = sc.next();
+		Empleado leerEmpleado = new Empleado(loggin, password);
+		leerEmpleado = leerEmpleado.leerEmpleados();
+		
+		Persona leerAlumno = new Alumno();
 		leerAlumno = leerAlumno.leerPersona(DNI);
+		Persona leerProfesor = new Profesor();
+		leerProfesor = leerProfesor.leerPersona(DNI);
 		
 		if (leerAlumno != null) {
 			System.out.println(leerAlumno.toString());
