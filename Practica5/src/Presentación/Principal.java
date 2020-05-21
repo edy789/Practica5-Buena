@@ -5,13 +5,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+<<<<<<< HEAD
 
-import Dominio.Alumno;
+import Dominio.ExtrasVehiTurismos;
+=======
 import Dominio.Empleado;
-import Dominio.Persona;
-import Dominio.Profesor;
+>>>>>>> branch 'master' of https://github.com/edy789/Practica5-Buena.git
 import Dominio.Vehiculo;
 import Dominio.VehiculoCamiones;
+import Dominio.VehiculoTurismos;
+
+class excepcionUsuario extends Exception {
+}
+
+class excepcionPassword extends Exception {
+}
+
+class excepcionFueraRango extends Exception {
+}
 
 public class Principal {
 
@@ -26,12 +37,7 @@ public class Principal {
 		
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
 		
-		buscarPersona();
-		
-		
-		
-		
-		
+		LoggeoEmpleado();
 		
 		// Menú principal
 		do {
@@ -72,12 +78,12 @@ public class Principal {
 					break;
 				case 6:
 					eliminarTodasLosVehiculos();
-					break;
+					break; 
 				case 7:
-					mostrarExtras();
+					mostrarExtras(); 
 					break;
 				case 8:
-					buscarExtra();
+					buscarExtra(); 
 					break;
 				case 9:
 					añadirExtra();
@@ -107,19 +113,128 @@ public class Principal {
 
 	private static void mostrarVehiculos() {
 		// TODO Auto-generated method stub
-		
-		
+	}
+
+	private static void buscarVehiculo() throws ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Indica la matricula");
+		String Matricula = sc.next();
+		Vehiculo leerCamiones = new VehiculoCamiones();
+		leerCamiones = leerCamiones.leerVehiculo(Matricula);
+		Vehiculo leerTurismos = new VehiculoTurismos();
+		leerTurismos = leerTurismos.leerVehiculo(Matricula);
+		if (leerCamiones != null) {
+			System.out.println(leerCamiones.toString());
+		} else if (leerTurismos != null) {
+			System.out.println(leerTurismos.toString());
+		} else {
+			System.out.printf("No existe el vehiculo con la matricula %s\n", Matricula);
+		}
 		
 	}
 
-	private static void buscarVehiculo() {
-		// TODO Auto-generated method stub
-		
-	}
+	private static void añadirvehiculo() throws ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		boolean seguir = false;
+		String Matricula = "";
+		ExtrasVehiTurismos newextra = new ExtrasVehiTurismos();
+		do {
+			seguir = false;
+			System.out.println("Introduzca matricula");
+			Matricula = sc.next();
+			Vehiculo existeTurismo = new VehiculoTurismos();
+			existeTurismo = existeTurismo.leerVehiculo(Matricula);
+			Vehiculo existeCamion = new VehiculoCamiones();
+			existeCamion = existeCamion.leerVehiculo(Matricula);
+			if (existeTurismo != null) {
 
-	private static void añadirvehiculo() {
-		// TODO Auto-generated method stub
-		
+				if (existeTurismo.getMatricula().equals(Matricula)) {
+					System.out.println("Matricula repetida");
+					seguir = true;
+				}
+			}
+			
+			if (existeCamion != null) {
+
+				if (existeCamion.getMatricula().equals(Matricula)) {
+					System.out.println("Matricula repetida");
+					seguir = true;
+				}
+			}
+		} while (seguir);
+		System.out.println("Introduzca marca");
+		sc.nextLine();
+		String marca = sc.nextLine();
+		System.out.println("Introduzca modelo");
+		String modelo = sc.nextLine();
+		System.out.println("Introduzca color");
+		String color = sc.nextLine();
+		int precio = 0;
+		do {
+			seguir = false;
+			try {
+				System.out.println("Introduzca el precio");
+				precio = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.err.println("Introduzce solo números");
+				seguir = true;
+				sc.nextLine();
+			}
+		} while (seguir);
+		int opcion = 0;
+		do {
+			try {
+				System.out.println("¿Es turismo o camion?\n1. Turismo\n2. Camion");
+				opcion = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.err.println("Introduzce solo números");
+				sc.nextLine();
+			}
+		} while (opcion != 1 && opcion != 2);
+		int extra = 0;
+		if (opcion == 1) {
+
+			do {
+				seguir = false;
+				try {
+					mostrarExtras();
+					System.out.println("Introduzca extra");
+					extra = sc.nextInt();
+					newextra = new ExtrasVehiTurismos();
+					newextra = newextra.leerExtrasVehiTurismos(extra);
+					if (newextra == null) {
+						seguir = true;
+						System.out.println("El extra no existe");
+
+					}
+				} catch (InputMismatchException e) {
+					System.err.println("Introduzce solo números");
+					seguir = true;
+					sc.nextLine();
+				}
+			} while (seguir);
+
+			Vehiculo newVehiculo = new VehiculoTurismos(Matricula, marca, modelo, color, precio, extra, newextra);
+			newVehiculo.insertar();
+
+		}
+		double capacarga = 0;
+		if (opcion == 2) {
+
+			do {
+				seguir = false;
+				try {
+					System.out.println("Introduzca el capacidad de carga");
+					capacarga = sc.nextDouble();
+				} catch (InputMismatchException e) {
+					System.err.println("Introduzce solo números");
+					seguir = true;
+					sc.nextLine();
+				}
+			} while (seguir);
+			Vehiculo newVehiculo = new VehiculoCamiones(Matricula, marca, modelo, color, precio, capacarga);
+			newVehiculo.insertar();
+		}
 	}
 
 	private static void modificarVehiculo() {
@@ -167,30 +282,23 @@ public class Principal {
 		
 	}
 	
-	public static void buscarPersona() throws ClassNotFoundException {
+	public static void LoggeoEmpleado() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica el Loggin");
 		String loggin = sc.next();
 		System.out.println("Indica su contraseña");
 		String password = sc.next();
-		Empleado leerEmpleado = new Empleado(loggin, password);
-		leerEmpleado = leerEmpleado.leerEmpleados();
+		Empleado leerEmpleado = new Empleado();
+		leerEmpleado = leerEmpleado.leerEmpleado(loggin,password);
 		
-		Persona leerAlumno = new Alumno();
-		leerAlumno = leerAlumno.leerPersona(DNI);
-		Persona leerProfesor = new Profesor();
-		leerProfesor = leerProfesor.leerPersona(DNI);
-		
-		if (leerAlumno != null) {
-			System.out.println(leerAlumno.toString());
-		} else if (leerProfesor != null) {
-			System.out.println(leerProfesor.toString());
+		if (leerEmpleado != null) {
+			System.out.println(leerEmpleado.toString());
 		} else {
-			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+			System.out.printf("No existe la Empleado con el loggin %s o con password %s \n", loggin , password);
 		}
+		
 
 	}
 
 	}
-
 
