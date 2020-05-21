@@ -5,11 +5,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+<<<<<<< HEAD
 
 import Dominio.ExtrasVehiTurismos;
+=======
+import Dominio.Empleado;
+>>>>>>> branch 'master' of https://github.com/edy789/Practica5-Buena.git
 import Dominio.Vehiculo;
 import Dominio.VehiculoCamiones;
 import Dominio.VehiculoTurismos;
+
+class excepcionUsuario extends Exception {
+}
+
+class excepcionPassword extends Exception {
+}
+
+class excepcionFueraRango extends Exception {
+}
 
 public class Principal {
 
@@ -24,12 +37,7 @@ public class Principal {
 		
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
 		
-		buscarPersona();
-		
-		
-		
-		
-		
+		LoggeoEmpleado();
 		
 		// Menú principal
 		do {
@@ -274,25 +282,23 @@ public class Principal {
 		
 	}
 	
-	public static void buscarPersona() throws ClassNotFoundException {
+	public static void LoggeoEmpleado() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica el Loggin");
 		String loggin = sc.next();
 		System.out.println("Indica su contraseña");
-		String clave = sc.next();
+		String password = sc.next();
 		Empleado leerEmpleado = new Empleado();
-		leerAlumno = leerAlumno.leerPersona(DNI);
+		leerEmpleado = leerEmpleado.leerEmpleado(loggin,password);
 		
-		if (leerAlumno != null) {
-			System.out.println(leerAlumno.toString());
-		} else if (leerProfesor != null) {
-			System.out.println(leerProfesor.toString());
+		if (leerEmpleado != null) {
+			System.out.println(leerEmpleado.toString());
 		} else {
-			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+			System.out.printf("No existe la Empleado con el loggin %s o con password %s \n", loggin , password);
 		}
+		
 
 	}
 
 	}
-
 
