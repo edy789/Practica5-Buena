@@ -39,7 +39,7 @@ public class VehiculoTurismoDao extends VehiculoDao {
 	}
 
 	@Override
-	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException  {
+	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException    {
 		Connection co = null;
 		Statement stm = null;
 		ResultSet rs = null;
