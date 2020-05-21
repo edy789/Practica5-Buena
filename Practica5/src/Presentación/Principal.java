@@ -192,6 +192,7 @@ public class Principal {
 			}
 		} while (opcion != 1 && opcion != 2);
 		int extra = 0;
+		int numpuertas = 0;
 		if (opcion == 1) {
 
 			do {
@@ -214,7 +215,7 @@ public class Principal {
 				}
 			} while (seguir);
 
-			Vehiculo newVehiculo = new VehiculoTurismos(Matricula, marca, modelo, color, precio, extra, newextra);
+			Vehiculo newVehiculo = new VehiculoTurismos(Matricula, marca, modelo, color, precio, numpuertas, newextra);
 			newVehiculo.insertar();
 
 		}
