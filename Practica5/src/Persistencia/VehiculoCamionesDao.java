@@ -79,7 +79,7 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			return listaVehiculo;
 		}
 		
-		public VehiculoCamiones leer(String Matricula) throws ClassNotFoundException {
+		public Vehiculo leer(String Matricula) throws ClassNotFoundException {
 			Connection co = null;
 			Statement stm = null;
 			ResultSet rs = null;
@@ -113,7 +113,7 @@ public class VehiculoCamionesDao extends VehiculoDao{
 				System.out.println("Error:  método leer");
 				e.printStackTrace();
 			}
-			return (VehiculoCamiones) leerVehiculo;
+			return (Vehiculo) leerVehiculo;
 		}
 		
 		
