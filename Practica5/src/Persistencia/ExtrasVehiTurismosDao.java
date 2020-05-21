@@ -18,10 +18,9 @@ public class ExtrasVehiTurismosDao {
 		
 		Statement stm= null;
 		Connection con=null;
-		
-		String sql="INSERT INTO Camines values ('"+VehiculoCamiones.getMatricula()+"','"+VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"',"+VehiculoCamiones.getColor() +")";
-		String sql2="INSERT INTO Camiones values ('"+VehiculoCamiones.getMatricula()+"',"+((VehiculoCamiones)VehiculoCamiones).getCapacarga()+")";
-		
+
+		String sql="INSERT INTO Extra values ("+extrasVehiTurismos.getIdentificador()+",'"+extrasVehiTurismos.getDescripcion()+"')";
+
 		try {			
 			con=Conexion.conectar();
 			stm= con.createStatement();
@@ -30,7 +29,7 @@ public class ExtrasVehiTurismosDao {
 			stm.close();
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BecaDaoImple, método registrar");
+			System.out.println("Error: Clase extrasVehiTurismos, método insertar");
 			e.printStackTrace();
 		}
 		return registrar;
@@ -57,7 +56,7 @@ public class ExtrasVehiTurismosDao {
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BecaDaoImple, método leerTodos");
+			System.out.println("Error: Clase BecaDaoImple, método leerTodos en ExtrasVehiTurismos");
 			e.printStackTrace();
 		}
 		
