@@ -1,96 +1,84 @@
 package Persistencia;
 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Dominio.ExtrasVehiTurismos;
-import Dominio.Vehiculo;
-import Dominio.VehiculoCamiones;
-import Dominio.VehiculoTurismos;
+import Dominio.*;
+import Persistencia.*;
 
-
-
-public class VehiculoTurismoDao extends VehiculoDao{
+public class VehiculoTurismoDao extends VehiculoDao {
 
 	@Override
-	public boolean insertar(Vehiculo vehiculo) throws ClassNotFoundException {
+	public boolean insertar(Vehiculo VehiculoTurismos) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
 		boolean registrar = false;
 		
 		Statement stm= null;
 		Connection con=null;
 		
-		String sql="INSERT INTO Turismos values ('"+VehiculoCamiones.getMatricula()+"','"+ VehiculoCamiones.getMarca()+"','"+VehiculoCamiones.getModelo()+"',"+vehiculo.getColor()
-		+VehiculoCamiones.getPrecio();
-	
-
+		String sql="INSERT INTO Camines values ('"+VehiculoTurismos.getMatricula()+"','"+VehiculoTurismos.getMarca()+"','"+VehiculoTurismos.getModelo()+"',"+VehiculoTurismos.getColor() +")";
+		String sql2="INSERT INTO Camiones values ('"+VehiculoTurismos.getMatricula()+"',"+((VehiculoTurismos)VehiculoTurismos).getNumpuertas()
+				+")";
+		
 		try {			
 			con=Conexion.conectar();
 			stm= con.createStatement();
 			stm.execute(sql);
-			
 			registrar=true;
 			stm.close();
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase ProfesorDaoImple, método registrar");
+			System.out.println("Error: Clase VehiculoTurismos, método registrar");
 			e.printStackTrace();
 		}
-		
-		
 		return registrar;
 	}
-
 
 	@Override
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
 		Connection co = null;
 		Statement stm = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM ORDER BY DNI";
+		String sql = "SELECT * FROM turismos ORDER BY matricula";
 
-		ArrayList<Vehiculo> listaTurismos = new ArrayList<Vehiculo>();
-	
-		
+		ArrayList<Vehiculo> listaVehiculo = new ArrayList<Vehiculo>();
+
 		try {
 			co = Conexion.conectar();
 			stm = co.createStatement();
 			rs = stm.executeQuery(sql);
 			while (rs.next()) {
-					
-				listaTurismos.add(new VehiculoTurismos(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getInt(6), null));
+				listaVehiculo.add(new VehiculoTurismos(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getInt(6),null));
 			}
 			stm.close();
 			rs.close();
 			co.close();
-			
-
-			for (int i = 0; i < listaTurismos.size(); i++) {
+			for (int i = 0; i < listaVehiculo.size(); i++) {
 				co = Conexion.conectar();
 				stm = co.createStatement();
-				sql = "SELECT * FROM Turismos WHERE matricula='" + listaTurismos.get(i).getMatricula() + "'";
+				sql = "SELECT * FROM turismos WHERE matricula='" + listaVehiculo.get(i).getMatricula() + "'";
 				rs = stm.executeQuery(sql);
 				rs.next();
-				listaTurismos.get(i).setMarca(rs.getString(2));
-				listaTurismos.get(i).setModelo(rs.getString(3));
-				listaTurismos.get(i).setColor(rs.getString(4));
-				listaTurismos.get(i).setPrecio(rs.getInt(5));
+				listaVehiculo.get(i).setMarca(rs.getString(2));
+				listaVehiculo.get(i).setModelo(rs.getString(3));
+				listaVehiculo.get(i).setColor(rs.getString(4));
+				listaVehiculo.get(i).setPrecio(rs.getInt(6));
 
 				stm.close();
 				rs.close();
 				co.close();
 			}
 		} catch (SQLException e) {
-			System.out.println("Error: Clase AlumnoDaoImple, método obtener");
+			System.out.println("Error: Clase VehiculoTurismos, método obtener");
 			e.printStackTrace();
 		}
 
-		return listaTurismos;
+		return listaVehiculo;
 	}
-
-	
 
 	@Override
 	public Vehiculo leer(String matricula) throws ClassNotFoundException {
@@ -98,51 +86,49 @@ public class VehiculoTurismoDao extends VehiculoDao{
 		Statement stm = null;
 		ResultSet rs = null;
 
-		Vehiculo leer = null;
-		String sql = "SELECT * FROM Turismos WHERE matricula='" + matricula + "'";
+		Vehiculo leerVehiculo = null;
+		String sql = "SELECT * FROM turismos WHERE matricula='" + matricula + "'";
 		try {
 			co = Conexion.conectar();
 			stm = co.createStatement();
 			rs = stm.executeQuery(sql);
 			while (rs.next()) {
-				leer = new VehiculoTurismos(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getInt(6), null);
+				leerVehiculo = new VehiculoTurismos(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getInt(6),null);
 			}
 			stm.close();
 			rs.close();
 			co.close();
-			if(leer!=null) {
+			if(leerVehiculo!=null) {
 				co = Conexion.conectar();
 				stm = co.createStatement();
-				sql = "SELECT * FROM turismos WHERE matricula='" + leer.getMatricula() + "'";
+				sql = "SELECT * FROM turismos WHERE matricula='" + leerVehiculo.getMatricula() + "'";
 				rs = stm.executeQuery(sql);
 				rs.next();
-				leer.setMarca(rs.getString(2));
-				leer.setModelo(rs.getString(3));
-				leer.setColor(rs.getString(4));
-				leer.setPrecio(rs.getDouble(5));
+				leerVehiculo.setMarca(rs.getString(2));
+				leerVehiculo.setModelo(rs.getString(3));
+				leerVehiculo.setColor(rs.getString(4));
+				leerVehiculo.setPrecio(rs.getInt(6));
+
 				}
 
 		} catch (SQLException e) {
-			System.out.println("Error:  método eliminar");
+			System.out.println("Error:  método leer");
 			e.printStackTrace();
 		}
-		return leer;
+		return (Vehiculo) leerVehiculo;
 	}
-
 	@Override
-	public boolean actualizar(Vehiculo vehiculo, String matricula) throws ClassNotFoundException {
+	public boolean actualizar(Vehiculo VehiculoTurismos, String matricula) throws ClassNotFoundException {
 		Connection connect= null;
 		Statement stm= null;
 		
 		boolean actualizar=false;
 		if(VehiculoTurismos.getMatricula().equals(matricula)) {			
-		String sql="UPDATE Turismos SET matricula='"+ VehiculoTurismos.getMatricula()+"', marca='"+VehiculoTurismos.getMarca()+"', modelo='"+VehiculoCamiones.getModelo()+"', precio="+VehiculoTurismos.getPrecio()+" WHERE matricula='"+VehiculoTurismos.getMatricula()+"'";
-		
+		String sql="UPDATE Camiones SET matricula='"+VehiculoTurismos.getMatricula()+"', marca='"+VehiculoTurismos.getMarca()+"', modelo='"+VehiculoTurismos.getModelo()+"', color='"+VehiculoTurismos.getColor()+"' , precio="+VehiculoTurismos.getPrecio()+"', capacidad="+((VehiculoTurismos)VehiculoTurismos).getNumpuertas()+" WHERE Matricula='"+VehiculoTurismos.getMatricula()+"'";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
 			stm.execute(sql);
-			
 			actualizar=true;
 			stm.close();
 			connect.close();
@@ -151,16 +137,13 @@ public class VehiculoTurismoDao extends VehiculoDao{
 			e.printStackTrace();
 		}		
 		}else {
-		String sql="INSERT INTO turismos values ('"+VehiculoTurismos.getMatricula()+"','"+VehiculoTurismos.getMarca()+"','"+VehiculoTurismos.getModelo()+"',"+VehiculoTurismos.getPrecio()+")";
-		
-		String sql2="DELETE FROM turismos WHERE matricula='"+matricula+"'";
-		
+		String sql="INSERT INTO turismos values ('"+VehiculoTurismos.getMatricula()+"','"+VehiculoTurismos.getMarca()+"', '"+VehiculoTurismos.getModelo()+"', '"+VehiculoTurismos.getColor()+"', "+VehiculoTurismos.getPrecio()+((VehiculoTurismos)VehiculoTurismos).getNumpuertas()+")";
+		String sql3="DELETE FROM turismos WHERE matricula='"+matricula+"'";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
 			stm.execute(sql);
-			stm.execute(sql2);
-			
+			stm.execute(sql3);
 
 			actualizar=true;
 			stm.close();
@@ -174,24 +157,21 @@ public class VehiculoTurismoDao extends VehiculoDao{
 		
 		return actualizar;
 	}
-
-	
+ 
 
 	@Override
-	public boolean eliminar(Vehiculo vehiculo) throws ClassNotFoundException {
+	public boolean eliminar(Vehiculo VehiculoTurismos) throws ClassNotFoundException {
 		Connection connect= null;
 		Statement stm= null;
 		
 		boolean eliminar=false;
 		
-		String sql= "DELETE FROM Extra where identificador='"+ ExtrasVehiTurismos.getIdentificador()+"";
-		String sql2="DELETE FROM turismos WHERE matricula='"+VehiculoTurismos.getMatricula()+"'";
-		
+		String sql="DELETE FROM turismos WHERE matricula='"+VehiculoTurismos.getMatricula()+"'";
+
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
 			stm.execute(sql);
-			
 			eliminar=true;
 		} catch (SQLException e) {
 			System.out.println("Error:  método eliminar");
@@ -201,8 +181,6 @@ public class VehiculoTurismoDao extends VehiculoDao{
 		return eliminar;
 	}
 
-
-	
 
 	@Override
 	public boolean eliminarTodo() throws ClassNotFoundException {
@@ -210,19 +188,27 @@ public class VehiculoTurismoDao extends VehiculoDao{
 		Statement stm= null;
 		
 		boolean eliminar=false;
+				
+		String sql="DELETE FROM turismos";
 		
-		String sql= "DELETE FROM Turismos";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
 			stm.execute(sql);
-			
 			eliminar=true;
 		} catch (SQLException e) {
 			System.out.println("Error:  método eliminar");
 			e.printStackTrace();
-		}				
-			
-		return eliminar;
+		}		
+		return eliminar;		
 	}
-}
+
+
+	}
+	
+	
+
+
+
+
+	
