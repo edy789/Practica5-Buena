@@ -79,7 +79,7 @@ public class VehiculoCamionesDao extends VehiculoDao{
 			return listaVehiculo;
 		}
 		
-		public VehiculoCamiones leer(String Matricula) throws ClassNotFoundException {
+		public Vehiculo leer(String Matricula) throws ClassNotFoundException {
 			Connection co = null;
 			Statement stm = null;
 			ResultSet rs = null;
