@@ -8,7 +8,7 @@ import java.util.Scanner;
 <<<<<<< HEAD
 
 import Dominio.ExtrasVehiTurismos;
-=======
+import Dominio.Beca;
 import Dominio.Empleado;
 >>>>>>> branch 'master' of https://github.com/edy789/Practica5-Buena.git
 import Dominio.Vehiculo;
@@ -250,34 +250,137 @@ public class Principal {
 	}
 
 	private static void mostrarExtras() {
-		// TODO Auto-generated method stub
-		
+		boolean sinExtras = true;
+		ExtrasVehiTurismos buscarExtras = new ExtrasVehiTurismos();
+		ArrayList<ExtrasVehiTurismos> extras = buscarExtras.leerTodos();
+		for (int i = 0; i < extras.size(); i++) {
+			System.out.println(extras.get(i).toString());
+			sinExtras = false;
+		}
+
+		if (sinExtras) {
+			System.out.println("No existen extras");
+
+		}
 	}
 
-	private static void buscarExtra() {
-		// TODO Auto-generated method stub
+	private static void buscarExtra() throws ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Indica el Id de extra");
+		int identificador = sc.nextInt();
+		ExtrasVehiTurismos leerExtra = new ExtrasVehiTurismos();
+		leerExtra = leerExtra.leerExtrasVehiTurismos(identificador);
 		
+		if (leerExtra != null) {
+			System.out.println(leerExtra.toString());
+		} else {
+			System.out.printf("No existe el extra con la identificador %s\n", identificador);
+		}
 	}
 
 	private static void añadirExtra() {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+
+		boolean seguir = false;
+		int ident = 0;
+		do {
+			seguir = false;
+			System.out.println("Introduzca el identificador de extra");
+			ident = sc.nextInt();
+			ExtrasVehiTurismos existeExtras = new ExtrasVehiTurismos();
+			existeExtras = existeExtras.leerExtrasVehiTurismos(ident);
+
+			if (existeExtras != null) {
+
+				if (existeExtras.getIdentificador() == ident) {
+					System.out.println("identificador repetido ingresa otro");
+					seguir = true;
+				}
+			}
+
+		} while (seguir);
 		
+		System.out.println("Introduzca la descripcion");
+		sc.nextLine();
+		String descExtra = sc.nextLine();
+
+		ExtrasVehiTurismos newExtra = new ExtrasVehiTurismos(ident, descExtra);
+		newExtra.insertar();
 	}
 
 	private static void modificarExtra() {
-		// TODO Auto-generated method stub
-		
+		Scanner sc = new Scanner(System.in);
+		ExtrasVehiTurismos modExtra = new ExtrasVehiTurismos();
+
+		System.out.println("Indica el identificador");
+		int ident = sc.nextInt();
+		modExtra = modExtra.leerExtrasVehiTurismos(ident);
+
+		if (modExtra != null) {
+			System.out.println("¿Qué deseas modificar?");
+			System.out.println("1. identificador");
+			System.out.println("2. Descripción");
+			int opcion = sc.nextInt();
+			switch (opcion) {
+			
+			case 1:
+				boolean repetido = false;
+				do {
+					repetido = false;
+					System.out.println("Introduce el nuevo identificador");
+					int Id = sc.nextInt();
+					ExtrasVehiTurismos existeExtra = new ExtrasVehiTurismos();
+					existeExtra = existeExtra.leerExtrasVehiTurismos(Id);
+
+					if (existeExtra != null) {
+						if (existeExtra.getIdentificador() == Id) {
+							System.out.println("identificador repetido");
+							repetido = true;
+						}
+					} else {
+						modExtra.setIdentificador(Id);
+					}
+				} while (repetido);
+				break;
+				
+				
+			case 2:
+				System.out.println("Introduce la descripcion");
+				sc.nextLine();
+				String descripcion = sc.nextLine();
+				modExtra.setDescripcion(descripcion);
+				break;
+
+			}
+			modExtra.actualizar(ident);
+		} else {
+			System.out.printf("No existe el Extra con el identificador %d\n", ident);
+
+		}
 	}
 
 	private static void eliminarUnExtras() {
-		// TODO Auto-generated method stub
-		
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Indica el identificador");
+		int ident = sc.nextInt();
+		ExtrasVehiTurismos delExtra = new ExtrasVehiTurismos();
+		delExtra = delExtra.leerExtrasVehiTurismos(ident);
+
+		if (delExtra != null) {
+			delExtra.eliminar();
+
+		} else {
+			System.out.printf("No existe el extra con el identificador %d\n", ident);
+		}
 	}
 
 	private static void eliminarTodosLosExtras() {
-		// TODO Auto-generated method stub
-		
+		ExtrasVehiTurismos eliminarTodosExtras = new ExtrasVehiTurismos();
+		eliminarTodosExtras.eliminarTodo();
+
 	}
+
 	
 	public static void LogginEmpleado() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
