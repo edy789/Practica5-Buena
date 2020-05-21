@@ -8,7 +8,10 @@ import java.util.Scanner;
 <<<<<<< HEAD
 
 import Dominio.ExtrasVehiTurismos;
-=======
+import Dominio.Persona;
+import Dominio.Profesor;
+import Dominio.Alumno;
+import Dominio.Beca;
 import Dominio.Empleado;
 >>>>>>> branch 'master' of https://github.com/edy789/Practica5-Buena.git
 import Dominio.Vehiculo;
@@ -239,8 +242,162 @@ public class Principal {
 	}
 
 	private static void modificarVehiculo() {
-		// TODO Auto-generated method stub
-		
+		Scanner sc = new Scanner(System.in);
+		Vehiculo modTurismo = new VehiculoTurismos();
+		Vehiculo modCamion = new VehiculoCamiones();
+
+		System.out.println("Indica la matricula");
+		String Matricula = sc.next();
+		modTurismo = modTurismo.leerVehiculo(Matricula);
+		modCamion = modCamion.leerVehiculo(Matricula);
+
+		if (modTurismo != null || modCamion != null) {
+			System.out.println("¿Qué deseas modificar?");
+			System.out.println("1. Matricula");
+			System.out.println("2. Marca");
+			System.out.println("3. Modelo");
+			System.out.println("4. Color");
+			System.out.println("5. Precio");
+			if (modTurismo != null) {
+				System.out.println("6. Numero de puertas");
+				System.out.println("7. Estras");
+			}
+			if (modCamion != null) {
+				System.out.println("5. Capacidad de carga");
+			}
+			int opcion = sc.nextInt();
+			switch (opcion) {
+			case 1:
+				boolean repetido = false;
+				do {
+					repetido = false;
+					System.out.println("Introduce la nueva matricula");
+					String matricula = sc.next();
+					Vehiculo existeTurismo = new VehiculoTurismos();
+					existeTurismo = existeTurismo.leerVehiculo(matricula);
+					Vehiculo existeCamion = new VehiculoCamiones();
+					existeCamion = existeCamion.leerVehiculo(matricula);
+					if (existeTurismo != null) {
+						if (existeTurismo.getMatricula().equals(matricula)) {
+							System.out.println("Matricula repetido");
+							repetido = true;
+						}
+					} else if (existeCamion != null) {
+						if (existeCamion.getMatricula().equals(matricula)) {
+							System.out.println("Matricula repetido");
+							repetido = true;
+						}
+					} else {
+
+						if (modTurismo != null) {
+							modTurismo.setMatricula(matricula);
+						}
+						if (modCamion != null) {
+							modCamion.setMatricula(matricula);
+						}
+					}
+				} while (repetido);
+				break;
+			case 2://SEGUIR DESDE AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				System.out.println("Introduce el nuevo nombre");
+				sc.nextLine();
+				String nombre = sc.nextLine();
+				if (modAlumno != null) {
+					modAlumno.setNombre(nombre);
+				}
+				if (modProfesor != null) {
+					modProfesor.setNombre(nombre);
+				}
+				break;
+			case 3:
+				System.out.println("Introduce el nuevo apellido");
+				sc.nextLine();
+				String apellidos = sc.nextLine();
+				if (modAlumno != null) {
+					modAlumno.setApellidos(apellidos);
+				}
+				if (modProfesor != null) {
+					modProfesor.setApellidos(apellidos);
+				}
+				break;
+			case 4:
+				boolean seguir = false;
+				do {
+					seguir = false;
+					try {
+						System.out.println("Introduce el nueva edad");
+						int edad = sc.nextInt();
+						if (modAlumno != null) {
+							modAlumno.setEdad(edad);
+						}
+						if (modProfesor != null) {
+							modProfesor.setEdad(edad);
+						}
+
+					} catch (InputMismatchException e) {
+						System.err.println("Introduzce solo números");
+						sc.nextLine();
+						seguir = true;
+					}
+				} while (seguir);
+				break;
+			case 5:
+				if (modAlumno != null) {
+					seguir = false;
+					do {
+						seguir = false;
+						try {
+							mostrarTodasLasBecas();
+							System.out.println("Introduce el nueva beca");
+							int beca = sc.nextInt();
+							Beca modBeca = new Beca();
+							modBeca = modBeca.leerBeca(beca);
+							if (modBeca == null) {
+								seguir = true;
+								System.out.println("La beca no existe");
+
+							} else {
+								((Alumno) modAlumno).setBeca(modBeca);
+							}
+						} catch (InputMismatchException e) {
+							System.err.println("Introduzce solo números");
+							sc.nextLine();
+							seguir = true;
+						}
+					} while (seguir);
+				}
+				if (modProfesor != null) {
+					seguir = false;
+					do {
+						seguir = false;
+						try {
+							System.out.println("Introduce el nuevo sueldo");
+							double sueldo = sc.nextDouble();
+							((Profesor) modProfesor).setSueldo(sueldo);
+
+						} catch (InputMismatchException e) {
+							System.err.println("Introduzce solo números");
+							sc.nextLine();
+							seguir = true;
+						}
+					} while (seguir);
+				}
+				break;
+
+			}
+			if (modAlumno != null) {
+				modAlumno.actualizar(DNI);
+
+			} else if (modProfesor != null) {
+				modProfesor.actualizar(DNI);
+
+			}
+
+		} else {
+			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+
+		}
+
 	}
 
 	private static void eliminarVehiculo() {
