@@ -16,6 +16,9 @@ public class Empleado {
 		this.password = password;
 		empleadoDao= new EmpleadoDao();
 	}
+	public Empleado() {
+		
+	}
 
 	public String getLoggin() {
 		return loggin;
@@ -46,8 +49,8 @@ public class Empleado {
 		return empleadoDao.leerTodos();
 
 	}
-	public Empleado leerEmpleado(String loggin) throws ClassNotFoundException {
-		return empleadoDao.leer(loggin);
+	public Empleado leerEmpleado(String loggin, String password) throws ClassNotFoundException {
+		return empleadoDao.leer(loggin, password );
 
 	}
 
@@ -64,8 +67,5 @@ public class Empleado {
 		empleadoDao.eliminarTodo();
 
 	}
-	public ArrayList<Empleado>leerEmpleados()throws FileNotFoundException;		//lectura de los metodos de los cuales heredaran los empleados
-	public void escribirEmpleados(ArrayList<Empleado>empleados)throws IOException;
-
 	
 }

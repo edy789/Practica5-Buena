@@ -5,13 +5,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import Dominio.Alumno;
 import Dominio.Empleado;
-import Dominio.Persona;
-import Dominio.Profesor;
 import Dominio.Vehiculo;
 import Dominio.VehiculoCamiones;
+
+class excepcionUsuario extends Exception {
+}
+
+class excepcionPassword extends Exception {
+}
+
+class excepcionFueraRango extends Exception {
+}
 
 public class Principal {
 
@@ -26,12 +31,7 @@ public class Principal {
 		
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
 		
-		buscarPersona();
-		
-		
-		
-		
-		
+		LoggeoEmpleado();
 		
 		// Menú principal
 		do {
@@ -167,30 +167,23 @@ public class Principal {
 		
 	}
 	
-	public static void buscarPersona() throws ClassNotFoundException {
+	public static void LoggeoEmpleado() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica el Loggin");
 		String loggin = sc.next();
 		System.out.println("Indica su contraseña");
 		String password = sc.next();
-		Empleado leerEmpleado = new Empleado(loggin, password);
-		leerEmpleado = leerEmpleado.leerEmpleados();
+		Empleado leerEmpleado = new Empleado();
+		leerEmpleado = leerEmpleado.leerEmpleado(loggin,password);
 		
-		Persona leerAlumno = new Alumno();
-		leerAlumno = leerAlumno.leerPersona(DNI);
-		Persona leerProfesor = new Profesor();
-		leerProfesor = leerProfesor.leerPersona(DNI);
-		
-		if (leerAlumno != null) {
-			System.out.println(leerAlumno.toString());
-		} else if (leerProfesor != null) {
-			System.out.println(leerProfesor.toString());
+		if (leerEmpleado != null) {
+			System.out.println(leerEmpleado.toString());
 		} else {
-			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+			System.out.printf("No existe la Empleado con el loggin %s o con password %s \n", loggin , password);
 		}
+		
 
 	}
 
 	}
-
 

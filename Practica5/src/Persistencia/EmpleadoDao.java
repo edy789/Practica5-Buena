@@ -76,13 +76,13 @@ public ArrayList<Empleado> leerTodos() throws ClassNotFoundException {
 
 
 
-public Empleado leer(String loggin) throws ClassNotFoundException {
+public Empleado leer(String loggin, String password) throws ClassNotFoundException {
 	Connection co = null;
 	Statement stm = null;
 	ResultSet rs = null;
 
 	Empleado leerEmpleado = null;
-	String sql = "SELECT * FROM Empleado WHERE loggin='" + loggin + "'";
+	String sql = "SELECT * FROM Empleado WHERE loggin='" + loggin + "' AND password='" + password + "' ";
 	try {
 		co = Conexion.conectar();
 		stm = co.createStatement();
@@ -96,7 +96,7 @@ public Empleado leer(String loggin) throws ClassNotFoundException {
 		if(leerEmpleado!=null) {
 			co = Conexion.conectar();
 			stm = co.createStatement();
-			sql = "SELECT * FROM Empleado WHERE loggin='" + leerEmpleado.getLoggin() + "'";
+			sql = "SELECT * FROM Empleado WHERE loggin='" + leerEmpleado.getLoggin() + "' "+ "AND password='" + leerEmpleado.getPassword() + "'";
 			rs = stm.executeQuery(sql);
 			rs.next();
 			leerEmpleado.setPassword(rs.getString(2));
@@ -104,7 +104,7 @@ public Empleado leer(String loggin) throws ClassNotFoundException {
 			}
 
 	} catch (SQLException e) {
-		System.out.println("Error:  método eliminar");
+		System.out.println("Error:  método leer empleado");
 		e.printStackTrace();
 	}
 	return leerEmpleado;
