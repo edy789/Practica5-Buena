@@ -22,16 +22,13 @@ public class Principal {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
-		Empleado emp = null;
 		int opcion=0;
 		
-		// Cargar los datos
-		String usu="";
-		String clave="";
+		// Cargar los datos e inicio de programa
 		
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
 		
-		LoggeoEmpleado();
+		LogginEmpleado();
 		
 		// Menú principal
 		do {
@@ -167,7 +164,7 @@ public class Principal {
 		
 	}
 	
-	public static void LoggeoEmpleado() throws ClassNotFoundException {
+	public static void LogginEmpleado() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica el Loggin");
 		String loggin = sc.next();
