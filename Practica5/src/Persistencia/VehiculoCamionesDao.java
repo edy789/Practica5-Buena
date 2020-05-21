@@ -113,7 +113,7 @@ public class VehiculoCamionesDao extends VehiculoDao{
 				System.out.println("Error:  método leer");
 				e.printStackTrace();
 			}
-			return (VehiculoCamiones) leerVehiculo;
+			return (Vehiculo) leerVehiculo;
 		}
 		
 		

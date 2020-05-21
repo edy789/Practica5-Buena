@@ -72,7 +72,7 @@ public class Principal {
 					eliminarTodasLosVehiculos();
 					break;
 				case 7:
-					mostrarExtras();
+					mostrarExtras(); 
 					break;
 				case 8:
 					buscarExtra(); 
