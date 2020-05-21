@@ -75,7 +75,7 @@ public class Principal {
 					mostrarExtras();
 					break;
 				case 8:
-					buscarExtra();
+					buscarExtra(); 
 					break;
 				case 9:
 					añadirExtra();
