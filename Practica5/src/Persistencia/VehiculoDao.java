@@ -14,8 +14,6 @@ abstract public class VehiculoDao {
 		abstract public boolean eliminar(Vehiculo vehiculo) throws ClassNotFoundException ;
 		abstract public boolean eliminarTodo() throws ClassNotFoundException;
 		
-		
-		
 }
 
 
