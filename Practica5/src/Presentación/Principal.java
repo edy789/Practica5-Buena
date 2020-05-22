@@ -227,7 +227,7 @@ public class Principal {
 		}
 	}
 
-	private static void modificarVehiculo() {
+	private static void modificarVehiculo() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		Vehiculo modTurismo = new VehiculoTurismos();
 		Vehiculo modCamion = new VehiculoCamiones();
@@ -245,8 +245,8 @@ public class Principal {
 			System.out.println("4. Color");
 			System.out.println("5. Precio");
 			if (modTurismo != null) {
-				System.out.println("6. Numero de puertas");
-				System.out.println("7. Estras");
+				System.out.println("6. Extras");
+				System.out.println("7. Numero de puertas");
 			}
 			if (modCamion != null) {
 				System.out.println("5. Capacidad de carga");
@@ -284,40 +284,51 @@ public class Principal {
 					}
 				} while (repetido);
 				break;
-			case 2://SEGUIR DESDE AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				System.out.println("Introduce el nuevo nombre");
+			case 2:
+				System.out.println("Introduce la nueva marca");
 				sc.nextLine();
-				String nombre = sc.nextLine();
-				if (modAlumno != null) {
-					modAlumno.setNombre(nombre);
+				String marca = sc.nextLine();
+				if (modTurismo != null) {
+					modTurismo.setMatricula(marca);
 				}
-				if (modProfesor != null) {
-					modProfesor.setNombre(nombre);
+				if (modCamion != null) {
+					modCamion.setMatricula(marca);
 				}
 				break;
 			case 3:
-				System.out.println("Introduce el nuevo apellido");
+				System.out.println("Introduce el nuevo modelo");
 				sc.nextLine();
-				String apellidos = sc.nextLine();
-				if (modAlumno != null) {
-					modAlumno.setApellidos(apellidos);
+				String modelo = sc.nextLine();
+				if (modTurismo != null) {
+					modTurismo.setModelo(modelo);
 				}
-				if (modProfesor != null) {
-					modProfesor.setApellidos(apellidos);
+				if (modCamion != null) {
+					modCamion.setModelo(modelo);
 				}
 				break;
 			case 4:
+				System.out.println("Introduce el nuevo color");
+				sc.nextLine();
+				String color = sc.nextLine();
+				if (modTurismo != null) {
+					modTurismo.setColor(color);
+				}
+				if (modCamion != null) {
+					modCamion.setColor(color);
+				}
+				break;
+			case 5:
 				boolean seguir = false;
 				do {
 					seguir = false;
 					try {
-						System.out.println("Introduce el nueva edad");
-						int edad = sc.nextInt();
-						if (modAlumno != null) {
-							modAlumno.setEdad(edad);
+						System.out.println("Introduce el nuevo precio");
+						int precio = sc.nextInt();
+						if (modTurismo != null) {
+							modTurismo.setPrecio(precio);
 						}
-						if (modProfesor != null) {
-							modProfesor.setEdad(edad);
+						if (modCamion != null) {
+							modCamion.setPrecio(precio);
 						}
 
 					} catch (InputMismatchException e) {
@@ -327,23 +338,23 @@ public class Principal {
 					}
 				} while (seguir);
 				break;
-			case 5:
-				if (modAlumno != null) {
+			case 6:
+				if (modTurismo != null) {
 					seguir = false;
 					do {
 						seguir = false;
 						try {
-							mostrarTodasLasBecas();
-							System.out.println("Introduce el nueva beca");
-							int beca = sc.nextInt();
-							Beca modBeca = new Beca();
-							modBeca = modBeca.leerBeca(beca);
-							if (modBeca == null) {
+							mostrarExtras();
+							System.out.println("Introduce el nuevo extra");
+							int extra = sc.nextInt();
+							ExtrasVehiTurismos modExtra = new ExtrasVehiTurismos();
+							modExtra = modExtra.leerExtrasVehiTurismos(extra);
+							if (modExtra == null) {
 								seguir = true;
-								System.out.println("La beca no existe");
+								System.out.println("El extra no existe");
 
 							} else {
-								((Alumno) modAlumno).setBeca(modBeca);
+								((VehiculoTurismos) modTurismo).setExtras(modExtra);
 							}
 						} catch (InputMismatchException e) {
 							System.err.println("Introduzce solo números");
@@ -352,14 +363,32 @@ public class Principal {
 						}
 					} while (seguir);
 				}
-				if (modProfesor != null) {
+				if (modCamion != null) {
 					seguir = false;
 					do {
 						seguir = false;
 						try {
-							System.out.println("Introduce el nuevo sueldo");
-							double sueldo = sc.nextDouble();
-							((Profesor) modProfesor).setSueldo(sueldo);
+							System.out.println("Introduce la nueva capacidad de carga");
+							double capacarga = sc.nextDouble();
+							((VehiculoCamiones) modCamion).setCapacarga(capacarga);
+
+						} catch (InputMismatchException e) {
+							System.err.println("Introduzce solo números");
+							sc.nextLine();
+							seguir = true;
+						}
+					} while (seguir);
+				}
+				break;
+			case 7:
+				if (modCamion != null) {
+					seguir = false;
+					do {
+						seguir = false;
+						try {
+							System.out.println("Introduce el nuevo numero de puertas");
+							int numpuertas = sc.nextInt();
+							((VehiculoTurismos) modTurismo).setNumpuertas(numpuertas);
 
 						} catch (InputMismatchException e) {
 							System.err.println("Introduzce solo números");
@@ -371,16 +400,16 @@ public class Principal {
 				break;
 
 			}
-			if (modAlumno != null) {
-				modAlumno.actualizar(DNI);
+			if (modTurismo != null) {
+				modTurismo.actualizar(Matricula);
 
-			} else if (modProfesor != null) {
-				modProfesor.actualizar(DNI);
+			} else if (modCamion != null) {
+				modCamion.actualizar(Matricula);
 
 			}
 
 		} else {
-			System.out.printf("No existe la persona con el DNI %s\n", DNI);
+			System.out.printf("No existe el vehiculo con matricula %s\n", Matricula);
 
 		}
 
