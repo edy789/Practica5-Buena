@@ -433,22 +433,23 @@ public class Principal {
 	}
 
 	private static void eliminarVehiculo() throws ClassNotFoundException  {
+		
 		Scanner sc = new Scanner(System.in);
-
 		System.out.println("Indica la matricula");
 		String matricula = sc.next();
-		
-		Vehiculo eliminarCamiones = new VehiculoCamiones();
-		Vehiculo eliminarTurismos= new VehiculoTurismos();
-		
-		
-	
-			System.out.printf("No existe la matricula %d\n", matricula);
-		
+		Vehiculo delTurismo = new VehiculoTurismos();
+		delTurismo = delTurismo.leerVehiculo(matricula);
+		Vehiculo delCamion = new VehiculoCamiones();
+		delCamion = delCamion.leerVehiculo(matricula);
+		if (delTurismo != null) {
+			delTurismo.eliminar();
+		} else if (delCamion != null) {
+			delCamion.eliminar();
+		} else {
+			System.out.printf("No existe el vehiculo con matricula %s\n", matricula);
+		}
+
 	}
-
-
-		
 		
 	
 
