@@ -1,4 +1,4 @@
-DROP TABLE Extra;
+DROP TABLE Extras;
 DROP TABLE Turismos;
 DROP TABLE Camiones;
 DROP TABLE Usuarios;

@@ -41,7 +41,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		ResultSet rs=null;
 		
-		String sql="SELECT * FROM Becas6 ORDER BY id";
+		String sql="SELECT * FROM Extra ORDER BY identificador";
 		
 		ArrayList<ExtrasVehiTurismos> listaExtras= new ArrayList<ExtrasVehiTurismos>();
 		
@@ -56,7 +56,7 @@ public class ExtrasVehiTurismosDao {
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BecaDaoImple, método leerTodos en ExtrasVehiTurismos");
+			System.out.println("Error: Clase extraDaoImple, método leerTodos en ExtrasVehiTurismos");
 			e.printStackTrace();
 		}
 		

@@ -100,7 +100,6 @@ public Empleado leer(String loggin, String password) throws ClassNotFoundExcepti
 			rs = stm.executeQuery(sql);
 			rs.next();
 			leerEmpleado.setPassword(rs.getString(2));
-
 			}
 
 	} catch (SQLException e) {
@@ -114,7 +113,7 @@ public boolean actualizar(Empleado empleado, String loggin) throws ClassNotFound
 	Statement stm= null;
 	
 	boolean actualizar=false;
-	if(empleado.getLoggin().equals(loggin)) {			
+	if(empleado.getLoggin().equals(loggin)) {		
 	String sql="UPDATE Empleado SET loggin='"+empleado.getLoggin()+"', contraseña='"+empleado.getPassword()+" WHERE loggin='"+empleado.getLoggin()+"'";
 	try {
 		connect=Conexion.conectar();
