@@ -9,9 +9,7 @@ matricula varchar2(10) Primary key,
 marca varchar2(15) NOT NULL,
 modelo varchar2(15) NOT NULL,
 color varchar2(15) NOT NULL,
-precio double NOT NULL
-);
-
+precio double NOT NULL);
 
 CREATE TABLE Camiones(
 matricula varchar2(10) Primary key,
@@ -19,14 +17,12 @@ marca varchar2(15) NOT NULL,
 modelo varchar2(15) NOT NULL,
 color varchar2(15) NOT NULL,
 capacidad varchar2(15) NOT NULL,
-precio double NOT NULL
+precio double NOT NULL,
 FOREIGN KEY (matricula) REFERENCES Vehiculos);
-);
 
 CREATE TABLE Extras(
 identificador SMALLINT PRIMARY KEY,
-descripcion varchar2(50) NOT NULL
-);
+descripcion varchar2(50) NOT NULL);
 
 CREATE TABLE Turismos(
 matricula varchar2(10) Primary key,
@@ -36,14 +32,12 @@ color varchar2(50) NOT NULL,
 numpuertas SMALLINT NOT NULL,
 precio double NOT NULL,
 extra SMALLINT NOT NULL, 
-FOREIGN KEY (matricula) REFERENCES Vehiculos);
-FOREIGN KEY(extra) REFERENCES Extras ON DELETE SET NULL
-);
+FOREIGN KEY (matricula) REFERENCES Vehiculos),
+FOREIGN KEY(extra) REFERENCES Extras ON DELETE SET NULL);
 
 CREATE TABLE Usuarios(
 loggin varchar2(50) Primary key,
-password varchar2(50) NOT NULL
-);
+password varchar2(50) NOT NULL);
 
 INSERT INTO Camiones VALUES ('9517FJQ', 'Ford', 'Transit', 'rojo pasion', '200kg', 20.000); 
 INSERT INTO Camiones VALUES ('9378HQZ', 'Pegaso', 'Camioneta', 'blanco', '800kg', 40.000); 

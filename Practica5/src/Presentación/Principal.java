@@ -451,8 +451,6 @@ public class Principal {
 
 	}
 		
-	
-
 	private static void eliminarTodasLosVehiculos() throws ClassNotFoundException {
 		// TODO Auto-generated method stub
 		Vehiculo eliminarCamiones = new VehiculoCamiones();
