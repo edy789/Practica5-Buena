@@ -432,7 +432,7 @@ public class Principal {
 
 	}
 
-	private static void eliminarVehiculo() throws ClassNotFoundException {
+	private static void eliminarVehiculo() throws ClassNotFoundException  {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Indica la matricula");
