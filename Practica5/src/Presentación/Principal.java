@@ -232,7 +232,7 @@ public class Principal {
 		Vehiculo modTurismo = new VehiculoTurismos();
 		Vehiculo modCamion = new VehiculoCamiones();
 
-		System.out.println("Indica la matricula");
+		System.out.println("Indica la matricula"); 
 		String Matricula = sc.next();
 		modTurismo = modTurismo.leerVehiculo(Matricula);
 		modCamion = modCamion.leerVehiculo(Matricula);
