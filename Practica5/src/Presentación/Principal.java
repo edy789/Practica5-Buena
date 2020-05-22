@@ -415,13 +415,34 @@ public class Principal {
 
 	}
 
-	private static void eliminarVehiculo() {
-		// TODO Auto-generated method stub
+	private static void eliminarVehiculo() throws ClassNotFoundException {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Indica la matricula");
+		String matricula = sc.next();
+		
+		Vehiculo eliminarCamiones = new VehiculoCamiones();
+		Vehiculo eliminarTurismos= new VehiculoTurismos();
+		
+		
+	
+			System.out.printf("No existe la matricula %d\n", matricula);
 		
 	}
 
-	private static void eliminarTodasLosVehiculos() {
+
+		
+		
+	
+
+	private static void eliminarTodasLosVehiculos() throws ClassNotFoundException {
 		// TODO Auto-generated method stub
+		Vehiculo eliminarCamiones = new VehiculoCamiones();
+		Vehiculo eliminarTurismos= new VehiculoTurismos();
+		eliminarCamiones.eliminarTodo();
+		eliminarTurismos.eliminarTodo();
+
+
 		
 	}
 
