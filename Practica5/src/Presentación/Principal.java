@@ -100,9 +100,26 @@ public class Principal {
 		} while (opcion!=13);
 	}
 
-	private static void mostrarVehiculos() {
-		// TODO Auto-generated method stub
+	private static void mostrarVehiculos() throws ClassNotFoundException {
+		boolean sinVehiculos = true;
+		Vehiculo buscarVehiculo = new VehiculoTurismos();
+		ArrayList<Vehiculo> Vehiculos = buscarVehiculo.leerTodos();
+		for (int i = 0; i < Vehiculos.size(); i++) {
+			System.out.println(Vehiculos.get(i).toString());
+			sinVehiculos = false;
+		}
+		buscarVehiculo = new VehiculoCamiones();
+		Vehiculos = buscarVehiculo.leerTodos();
+		for (int i = 0; i < Vehiculos.size(); i++) {
+			System.out.println(Vehiculos.get(i).toString());
+			sinVehiculos = false;
+		}
+		if (sinVehiculos) {
+			System.out.println("No existen vehiculos");
+
+		}
 	}
+	
 
 	private static void buscarVehiculo() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);

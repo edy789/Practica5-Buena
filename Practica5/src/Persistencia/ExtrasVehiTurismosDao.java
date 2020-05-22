@@ -19,7 +19,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		Connection con=null;
 
-		String sql="INSERT INTO Extra values ("+extrasVehiTurismos.getIdentificador()+",'"+extrasVehiTurismos.getDescripcion()+"')";
+		String sql="INSERT INTO Extras values ("+extrasVehiTurismos.getIdentificador()+",'"+extrasVehiTurismos.getDescripcion()+"')";
 
 		try {			
 			con=Conexion.conectar();
@@ -41,7 +41,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		ResultSet rs=null;
 		
-		String sql="SELECT * FROM Becas6 ORDER BY id";
+		String sql="SELECT * FROM Extras ORDER BY identificador";
 		
 		ArrayList<ExtrasVehiTurismos> listaExtras= new ArrayList<ExtrasVehiTurismos>();
 		
@@ -56,7 +56,7 @@ public class ExtrasVehiTurismosDao {
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error: Clase BecaDaoImple, método leerTodos en ExtrasVehiTurismos");
+			System.out.println("Error: Clase extraDaoImple, método leerTodos en ExtrasVehiTurismos");
 			e.printStackTrace();
 		}
 		
@@ -70,7 +70,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		ResultSet rs=null;
 		ExtrasVehiTurismos leerExtrasVehiTurismos = null;
-		String sql="SELECT * FROM Extra WHERE identificador="+identificador+"";
+		String sql="SELECT * FROM Extras WHERE identificador="+identificador+"";
 		try {
 			co= Conexion.conectar();
 			stm=co.createStatement();
@@ -82,7 +82,7 @@ public class ExtrasVehiTurismosDao {
 			rs.close();
 			co.close();
 		} catch (SQLException e) {
-			System.out.println("Error:  método leer");
+			System.out.println("Error:  método leer extras");
 			e.printStackTrace();
 		}		
 		return leerExtrasVehiTurismos;
@@ -95,7 +95,7 @@ public class ExtrasVehiTurismosDao {
 		
 		boolean actualizar=false;
 		
-		String sql="UPDATE Extra SET identificador="+extrasVehiTurismos.getIdentificador()+", descripcion="+extrasVehiTurismos.getDescripcion()+"' WHERE identificador="+identificador+"";
+		String sql="UPDATE Extras SET identificador="+extrasVehiTurismos.getIdentificador()+", descripcion="+extrasVehiTurismos.getDescripcion()+"' WHERE identificador="+identificador+"";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
@@ -115,7 +115,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		boolean actualizar=false;
 		boolean eliminar=false;
-		String sql="DELETE FROM Extra WHERE identificador='"+extrasVehiTurismos.getIdentificador()+"'";
+		String sql="DELETE FROM Extras WHERE identificador='"+extrasVehiTurismos.getIdentificador()+"'";
 		
 		try {
 			connect=Conexion.conectar();
@@ -128,7 +128,7 @@ public class ExtrasVehiTurismosDao {
 			System.out.println("Error: método eliminar");
 			e.printStackTrace();
 		}	
-		sql="DELETE FROM Extra WHERE identificador="+extrasVehiTurismos.getIdentificador()+"";
+		sql="DELETE FROM Extras WHERE identificador="+extrasVehiTurismos.getIdentificador()+"";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
@@ -146,7 +146,7 @@ public class ExtrasVehiTurismosDao {
 		Statement stm= null;
 		
 		boolean eliminar=false;
-		String sql="DELETE FROM Extra";
+		String sql="DELETE FROM Extras";
 		try {
 			connect=Conexion.conectar();
 			stm=connect.createStatement();
