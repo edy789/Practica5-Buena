@@ -100,7 +100,7 @@ public class Principal {
 		} while (opcion!=13);
 	}
 
-	private static void mostrarVehiculos() {
+	private static void mostrarVehiculos() throws ClassNotFoundException {
 		boolean sinVehiculos = true;
 		Vehiculo buscarVehiculo = new VehiculoTurismos();
 		ArrayList<Vehiculo> Vehiculos = buscarVehiculo.leerTodos();
@@ -119,7 +119,7 @@ public class Principal {
 
 		}
 	}
-	}
+	
 
 	private static void buscarVehiculo() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
