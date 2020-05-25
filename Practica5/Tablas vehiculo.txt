@@ -1,8 +1,8 @@
-DROP TABLE Extras;
 DROP TABLE Turismos;
 DROP TABLE Camiones;
-DROP TABLE Usuarios;
 DROP TABLE Vehiculos;
+DROP TABLE Extras;
+DROP TABLE Usuarios;
 
 CREATE TABLE Vehiculos(
 matricula varchar(10) Primary key,
