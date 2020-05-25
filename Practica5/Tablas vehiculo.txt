@@ -5,39 +5,44 @@ DROP TABLE Usuarios;
 DROP TABLE Vehiculos;
 
 CREATE TABLE Vehiculos(
-matricula varchar2(10) Primary key,
-marca varchar2(15) NOT NULL,
-modelo varchar2(15) NOT NULL,
-color varchar2(15) NOT NULL,
-precio double NOT NULL);
+matricula varchar(10) Primary key,
+marca varchar(15) NOT NULL,
+modelo varchar(15) NOT NULL,
+color varchar(15) NOT NULL,
+precio INT NOT NULL);
 
 CREATE TABLE Camiones(
-matricula varchar2(10) Primary key,
-marca varchar2(15) NOT NULL,
-modelo varchar2(15) NOT NULL,
-color varchar2(15) NOT NULL,
-capacidad varchar2(15) NOT NULL,
-precio double NOT NULL,
+matricula varchar(10) Primary key NOT NULL,
+marca varchar(15) NOT NULL,
+modelo varchar(15) NOT NULL,
+color varchar(15) NOT NULL,
+capacidad varchar(15) NOT NULL,
+precio int NOT NULL,
 FOREIGN KEY (matricula) REFERENCES Vehiculos);
 
 CREATE TABLE Extras(
-identificador SMALLINT PRIMARY KEY,
-descripcion varchar2(50) NOT NULL);
+identificador INT PRIMARY KEY,
+descripcion varchar(50) NOT NULL);
 
 CREATE TABLE Turismos(
-matricula varchar2(10) Primary key,
-marca varchar2(15) NOT NULL,
-modelo varchar2(15) NOT NULL,
-color varchar2(50) NOT NULL,
-numpuertas SMALLINT NOT NULL,
-precio double NOT NULL,
-extra SMALLINT NOT NULL, 
-FOREIGN KEY (matricula) REFERENCES Vehiculos),
+matricula varchar(10) Primary key,
+marca varchar(15) NOT NULL,
+modelo varchar(15) NOT NULL,
+color varchar(50) NOT NULL,
+numpuertas INT NOT NULL,
+precio INT NOT NULL,
+extra INT NOT NULL, 
+FOREIGN KEY (matricula) REFERENCES Vehiculos,
 FOREIGN KEY(extra) REFERENCES Extras ON DELETE SET NULL);
 
 CREATE TABLE Usuarios(
 loggin varchar2(50) Primary key,
 password varchar2(50) NOT NULL);
+
+INSERT INTO Vehiculos VALUES ('9517FJQ', 'Ford', 'Transit', 'rojo pasion', 20.000); 
+INSERT INTO Vehiculos VALUES ('9378HQZ', 'Pegaso', 'Camioneta', 'blanco',  40.000); 
+INSERT INTO Vehiculos VALUES ('8735HPL', 'Mercedes', 'CLK-500', 'verde', 30.000); 
+INSERT INTO Vehiculos VALUES ('7354BNP', 'BMW', 'M2', 'rojiblanco', 80.000); 
 
 INSERT INTO Camiones VALUES ('9517FJQ', 'Ford', 'Transit', 'rojo pasion', '200kg', 20.000); 
 INSERT INTO Camiones VALUES ('9378HQZ', 'Pegaso', 'Camioneta', 'blanco', '800kg', 40.000); 
